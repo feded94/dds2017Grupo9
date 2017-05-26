@@ -1,6 +1,7 @@
 public class OperadorMUL  implements Operador{
 
     public String getSimbolo() {
+
         return "MUL";
     }
 
