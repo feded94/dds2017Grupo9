@@ -38,6 +38,9 @@
     </div>
     <div class="container">
         <div class="row text-center" style="margin: 6em;">
+            <div class="col-md-12"><h1>Facebook</h1></div>
+        </div>
+        <div class="row text-center" style="margin: 6em;">
             <div class="col-md-12"><input type="button" ng-click="loadCuentas();" class="btn btn-primary btn-lg" value="Cargar Cuentas" /></div>
         </div>
         <div class="row">
@@ -46,19 +49,13 @@
                     <thead>
                     <tr>
                         <th>Nombre</th>
-                        <th>EBIDTA</th>
-                        <th>FCF</th>
-                        <th>DO</th>
-                        <th>Periodo</th>
+                        <th>Valor</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr ng-repeat="x in cuentas">
-                        <td>{{x.Nombre}}</td>
-                        <td>{{x.EBIDTA}}</td>
-                        <td>{{x.FCF}}</td>
-                        <td>{{x.DO}}</td>
-                        <td>{{x.Periodo}}</td>
+                        <td>{{x._nombre}}</td>
+                        <td>{{x._valor}}</td>
                     </tr>
                     </tbody>
                 </table>
