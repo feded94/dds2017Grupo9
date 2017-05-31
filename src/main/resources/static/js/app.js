@@ -9,7 +9,7 @@ app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
     $scope.cuentas = {};
 
     $scope.loadCuentas = function () {
-        $http.get('http://www.mocky.io/v2/58f6f465100000d20e24ef70').then(function (res) {
+        $http.get('/cuentas').then(function (res) {
             $scope.cuentas = res.data;
             $scope.mostrarTablaCuentas = true;
         });
