@@ -11,4 +11,9 @@ public class Numero implements Factor{
     public double getResultado() {
         return valor;
     }
+
+    @Override
+    public String toString() {
+        return Double.toString(valor);
+    }
 }

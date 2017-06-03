@@ -55,11 +55,11 @@ public class Listener extends IndicadorBaseListener {
             else {
                 System.out.printf("Nodo valido: %s\n", child.getText());
 
-                if (child.getText() == suma.getSimbolo()) {
+                if (child.getText().equals(suma.getSimbolo())) {
                     indicador.setOperador(suma);
                 }
 
-                else if (child.getText() == resta.getSimbolo()) {
+                else if (child.getText().equals(resta.getSimbolo())) {
                     indicador.setOperador(resta);
                 }
 
@@ -95,11 +95,11 @@ public class Listener extends IndicadorBaseListener {
             else {
                 System.out.printf("Nodo valido: %s\n", child.getText());
 
-                if (child.getText() == mult.getSimbolo()) {
+                if (child.getText().equals(mult.getSimbolo())) {
                     termino.setOperador(mult);
                 }
 
-                else if (child.getText() == div.getSimbolo()) {
+                else if (child.getText().equals(div.getSimbolo())) {
                     termino.setOperador(div);
                 }
 

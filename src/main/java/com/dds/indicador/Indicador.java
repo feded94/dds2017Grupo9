@@ -1,5 +1,7 @@
 package com.dds.indicador;
 
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
+
 public class Indicador implements Factor {
     private Termino termino1;
     private OperadorTermino operador;
@@ -36,5 +38,18 @@ public class Indicador implements Factor {
 
     public OperadorTermino getOperador() {
         return operador;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(termino1.toString());
+
+        if (termino2 != null) {
+            sb.append(operador.getSimbolo());
+            sb.append(termino2.toString());
+        }
+
+        return sb.toString();
     }
 }

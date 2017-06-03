@@ -37,4 +37,17 @@ public class Termino {
     public OperadorFactor getOperador() {
         return operador;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(factor1.toString());
+
+        if (factor2 != null) {
+            sb.append(operador.getSimbolo());
+            sb.append(factor2.toString());
+        }
+
+        return sb.toString();
+    }
 }
