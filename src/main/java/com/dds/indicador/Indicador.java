@@ -7,6 +7,10 @@ public class Indicador implements Factor {
 
     @Override
     public double getResultado() {
+        if (termino2 == null) {
+            return termino1.getResultado();
+        }
+
         return operador.operar(termino1, termino2);
     }
 
@@ -20,5 +24,17 @@ public class Indicador implements Factor {
 
     public void setOperador(OperadorTermino operador) {
         this.operador = operador;
+    }
+
+    public Termino getTermino1() {
+        return termino1;
+    }
+
+    public Termino getTermino2() {
+        return termino2;
+    }
+
+    public OperadorTermino getOperador() {
+        return operador;
     }
 }

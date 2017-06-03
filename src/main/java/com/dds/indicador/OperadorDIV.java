@@ -7,7 +7,7 @@ public class OperadorDIV implements OperadorFactor {
     }
 
     public double operar(Factor factor1, Factor factor2) {
-        if (factor1 == null || factor2 == null) {
+        if (factor2.getResultado() == 0) {
             throw new RuntimeException("No puede dividirse por cero");
         }
 
