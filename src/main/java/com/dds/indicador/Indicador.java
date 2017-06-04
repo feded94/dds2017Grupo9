@@ -1,53 +1,64 @@
 package com.dds.indicador;
 
-import org.antlr.v4.runtime.tree.ParseTreeWalker;
+import java.util.ArrayList;
 
 public class Indicador implements Factor {
-    private Termino termino1;
-    private OperadorTermino operador;
-    private Termino termino2;
+    private Termino termino;
+    private ArrayList<OperadorTermino> operadores;
+    private ArrayList<Termino> masTerminos;
 
     @Override
     public double getResultado() {
-        if (termino2 == null) {
-            return termino1.getResultado();
+        double resultado = termino.getResultado();
+
+        if (operadores == null) {
+            return resultado;
         }
 
-        return operador.operar(termino1, termino2);
+        for (int i = 0; i < masTerminos.size(); i++) {
+            OperadorTermino op = operadores.get(i);
+            Termino t = masTerminos.get(i);
+
+            resultado = op.operar(resultado, t);
+        }
+
+        return resultado;
     }
 
-    public void setTermino1(Termino termino1) {
-        this.termino1 = termino1;
+    public void addTermino(Termino termino) {
+        if (this.termino == null) {
+            this.termino = termino;
+        }
+        else {
+            if (masTerminos == null) {
+                masTerminos = new ArrayList<Termino>();
+            }
+            masTerminos.add(termino);
+        }
     }
 
-    public void setTermino2(Termino termino2) {
-        this.termino2 = termino2;
-    }
-
-    public void setOperador(OperadorTermino operador) {
-        this.operador = operador;
-    }
-
-    public Termino getTermino1() {
-        return termino1;
-    }
-
-    public Termino getTermino2() {
-        return termino2;
-    }
-
-    public OperadorTermino getOperador() {
-        return operador;
+    public void addOperador(OperadorTermino operador) {
+        if (operadores == null) {
+            operadores = new ArrayList<OperadorTermino>();
+        }
+        operadores.add(operador);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(termino1.toString());
+        sb.append(termino.toString());
 
-        if (termino2 != null) {
-            sb.append(operador.getSimbolo());
-            sb.append(termino2.toString());
+        if (operadores == null) {
+            return sb.toString();
+        }
+
+        for (int i = 0; i < masTerminos.size(); i++) {
+            OperadorTermino op = operadores.get(i);
+            Termino t = masTerminos.get(i);
+
+            sb.append(op.getSimbolo());
+            sb.append(t.toString());
         }
 
         return sb.toString();

@@ -6,11 +6,11 @@ public class OperadorDIV implements OperadorFactor {
         return "/";
     }
 
-    public double operar(Factor factor1, Factor factor2) {
+    public double operar(double factor1, Factor factor2) {
         if (factor2.getResultado() == 0) {
             throw new RuntimeException("No puede dividirse por cero");
         }
 
-        return factor1.getResultado() / factor2.getResultado();
+        return factor1 / factor2.getResultado();
     }
 }

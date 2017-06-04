@@ -4,5 +4,5 @@ public interface OperadorTermino {
 
     String getSimbolo();
 
-    double operar(Termino termino1, Termino termino2);
+    double operar(double termino1, Termino termino2);
 }

@@ -56,23 +56,16 @@ public class Listener extends IndicadorBaseListener {
                 System.out.printf("Nodo valido: %s\n", child.getText());
 
                 if (child.getText().equals(suma.getSimbolo())) {
-                    indicador.setOperador(suma);
+                    indicador.addOperador(suma);
                 }
 
                 else if (child.getText().equals(resta.getSimbolo())) {
-                    indicador.setOperador(resta);
+                    indicador.addOperador(resta);
                 }
 
                 else {
                     /* Es un termino */
-                    Termino termino = iterateTermino(child);
-
-                    if (indicador.getTermino1() == null) {
-                        indicador.setTermino1(termino);
-                    }
-                    else {
-                        indicador.setTermino2(termino);
-                    }
+                    indicador.addTermino(iterateTermino(child));
                 }
             }
         }
@@ -96,29 +89,16 @@ public class Listener extends IndicadorBaseListener {
                 System.out.printf("Nodo valido: %s\n", child.getText());
 
                 if (child.getText().equals(mult.getSimbolo())) {
-                    termino.setOperador(mult);
+                    termino.addOperador(mult);
                 }
 
                 else if (child.getText().equals(div.getSimbolo())) {
-                    termino.setOperador(div);
+                    termino.addOperador(div);
                 }
 
                 else {
                     /* Es un factor */
-                    Factor factor = iterateFactor(child);
-
-                    if (termino.getFactor1() == null) {
-                        termino.setFactor1(factor);
-                    }
-                    else {
-                        if (termino.getOperador() instanceof OperadorDIV
-                            && factor instanceof Numero
-                            && factor.getResultado() == 0) {
-                            throw new IndicadorException("El indicador ingresado tiene una division por cero");
-                        }
-
-                        termino.setFactor2(factor);
-                    }
+                    termino.addFactor(iterateFactor(child));
                 }
             }
         }

@@ -6,7 +6,7 @@ public class OperadorSUM implements OperadorTermino {
         return "+";
     }
 
-    public double operar(Termino termino1, Termino termino2) {
-        return termino1.getResultado() + termino2.getResultado();
+    public double operar(double termino1, Termino termino2) {
+        return termino1 + termino2.getResultado();
     }
 }

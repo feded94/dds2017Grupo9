@@ -1,51 +1,71 @@
 package com.dds.indicador;
 
+import java.util.ArrayList;
+
 public class Termino {
 
-    private Factor factor1;
-    private OperadorFactor operador;
-    private Factor factor2;
+    private Factor factor;
+    private ArrayList<OperadorFactor> operadores;
+    private ArrayList<Factor> masFactores;
 
     public double getResultado() {
-        if (factor2 == null) {
-            return factor1.getResultado();
+        double resultado = factor.getResultado();
+
+        if (operadores == null) {
+            return resultado;
         }
 
-        return operador.operar(factor1, factor2);
+        for (int i = 0; i < masFactores.size(); i++) {
+            OperadorFactor op = operadores.get(i);
+            Factor f = masFactores.get(i);
+
+            resultado = op.operar(resultado, f);
+        }
+
+        return resultado;
     }
 
-    public void setFactor1(Factor factor1) {
-        this.factor1 = factor1;
+    public void addFactor(Factor factor) throws IndicadorException {
+        if (this.factor == null) {
+            this.factor = factor;
+        }
+        else {
+            if (operadores.get(operadores.size() - 1) instanceof OperadorDIV
+                && factor.getResultado() == 0) {
+                throw new IndicadorException("El indicador ingresado tiene una division por cero");
+            }
+
+            if (masFactores == null) {
+                masFactores = new ArrayList<Factor>();
+            }
+
+            masFactores.add(factor);
+        }
     }
 
-    public void setFactor2(Factor factor2) {
-        this.factor2 = factor2;
-    }
+    public void addOperador(OperadorFactor operador) {
+        if (operadores == null) {
+            operadores = new ArrayList<OperadorFactor>();
+        }
 
-    public void setOperador(OperadorFactor operador) {
-        this.operador = operador;
-    }
-
-    public Factor getFactor1() {
-        return factor1;
-    }
-
-    public Factor getFactor2() {
-        return factor2;
-    }
-
-    public OperadorFactor getOperador() {
-        return operador;
+        operadores.add(operador);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(factor1.toString());
+        sb.append(factor.toString());
 
-        if (factor2 != null) {
-            sb.append(operador.getSimbolo());
-            sb.append(factor2.toString());
+        if (operadores == null) {
+            return sb.toString();
+        }
+
+        for (int i = 0; i < masFactores.size(); i++) {
+            OperadorFactor op = operadores.get(i);
+            Factor f = masFactores.get(i);
+
+            sb.append(op.getSimbolo());
+            sb.append(f.toString());
         }
 
         return sb.toString();
