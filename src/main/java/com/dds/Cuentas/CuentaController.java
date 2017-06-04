@@ -12,7 +12,7 @@ import java.util.Collection;
  * Created by USER on 19-Apr-17.
  */
 @RestController
-@RequestMapping("/cuentas")
+@RequestMapping("api/cuentas")
 public class CuentaController {
     @RequestMapping(method = RequestMethod.GET)
     Collection<Cuenta> getCuentas() {
