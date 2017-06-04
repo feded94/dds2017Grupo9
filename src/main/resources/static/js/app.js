@@ -1,17 +1,23 @@
-/**
- * Created by USER on 19-Apr-17.
- */
+var app = angular.module('hectorApp', ['ui.router']);
 
-var app = angular.module("hectorApp", []);
+app.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', function ($stateProvider, $locationProvider, $urlRouterProvider) {
 
-app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
-    $scope.mostrarTablaCuentas = false;
-    $scope.cuentas = {};
+        $stateProvider
+        // HOME STATES AND NESTED VIEWS ========================================
+            .state('home', {
+                url: '/home',
+                templateUrl: 'views/home.html',
+                controller: 'homeController',
+                controllerAs: 'hc'
+            })
 
-    $scope.loadCuentas = function () {
-        $http.get('/cuentas').then(function (res) {
-            $scope.cuentas = res.data;
-            $scope.mostrarTablaCuentas = true;
-        });
-    };
+            // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
+            .state('indicadores', {
+                url: '/indicadores',
+                templateUrl: 'views/indicadores.html',
+                controller: 'indicadoresController'
+            });
+
+        $urlRouterProvider.otherwise('/home');
+
 }]);

@@ -1,0 +1,64 @@
+<h1 class="page-header">Home</h1>
+
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <form class="form-inline">
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label for="comboEmpresa" class="control-label lblForm">Empresa:</label>
+                    <input type="text" class="form-control" id="comboEmpresa">
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label for="comboPeriodo" class="control-label lblForm">Periodo:</label>
+                    <input type="text" class="form-control" id="comboPeriodo">
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <button type="submit" class="btn btn-default pull-right" ng-click="hc.loadCuentas();">Buscar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-8 col-md-8">
+        <h3 class="sub-header">Cuentas</h3>
+        <div class="table-responsive" id="tblCuentas" ng-if="hc.showCuentasTbl">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Cuenta</th>
+                    <th>Valor</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="x in hc.cuentas">
+                    <td>{x._nombre}</td>
+                    <td>{x._valor}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-sm-4 col-md-4">
+        <h3 class="sub-header">Indicadores</h3>
+        <div class="table-responsive" id="tblIndicadores" ng-if="hc.showIndicadoresTbl">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Indicador</th>
+                    <th>Valor</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="x in hc.indicadores">
+                    <td>{x._nombre}</td>
+                    <td>{x._valor}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
