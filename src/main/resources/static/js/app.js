@@ -1,4 +1,4 @@
-var app = angular.module('hectorApp', ['ui.router']);
+var app = angular.module('app', ['ui.router', 'ui.bootstrap']);
 
 app.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', function ($stateProvider, $locationProvider, $urlRouterProvider) {
 
@@ -15,7 +15,8 @@ app.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', functio
             .state('indicadores', {
                 url: '/indicadores',
                 templateUrl: 'views/indicadores.html',
-                controller: 'indicadoresController'
+                controller: 'indicadoresController',
+                controllerAs: 'ic'
             });
 
         $urlRouterProvider.otherwise('/home');

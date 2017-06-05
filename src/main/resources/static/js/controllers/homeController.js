@@ -5,9 +5,13 @@ app.controller('homeController', ['$rootScope', '$scope', '$state', '$http', fun
         hc.showIndicadoresTbl = false;
 
         hc.loadCuentas = function () {
-            $http.get('/api/cuentas').then(function (res) {
+            $http.get('/api/cuentas')
+                .then(function (res) {
                 hc.cuentas = res.data;
                 hc.showCuentasTbl = true;
-            });
+                })
+                .catch(function(error){
+                    console.log(error);
+                });
         };
 }]);
