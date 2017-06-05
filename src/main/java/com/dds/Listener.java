@@ -27,12 +27,14 @@ public class Listener extends IndicadorBaseListener {
 
     @Override
     public void enterIndicador(IndicadorParser.IndicadorContext ctx) {
-        try {
-            this.indicadorActual = iterateIndicador(ctx);
-        }
-        catch (IndicadorException ie) {
-            System.err.println(ie.getMessage());
-            this.indicadorActual = null;
+        if (indicadorActual == null) {
+            try {
+                this.indicadorActual = iterateIndicador(ctx);
+            }
+            catch (IndicadorException ie) {
+                System.err.println(ie.getMessage());
+                this.indicadorActual = null;
+            }
         }
     }
 
