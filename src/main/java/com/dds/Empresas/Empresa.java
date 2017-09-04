@@ -1,4 +1,9 @@
 package com.dds.Empresas;
+import com.dds.Cuentas.Cuenta;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.text.ParseException;
 
 /**
  * Created by Federico on 28/8/2017.
@@ -6,18 +11,43 @@ package com.dds.Empresas;
 
 public class Empresa {
     private String _nombre;
-    private int _ROE;
-    private int _deuda;
-    private int _longevidad; //seria la cantidad de años desde la creacion de la empresa
+    private List<Cuenta> _cuentas;
+
+    public Empresa(String nombre) {
+        this._nombre = nombre;
+        this._cuentas = new ArrayList<Cuenta>();
+    }
 
     public String get_nombre() {
-        return _nombre;
+        return this._nombre;
     }
-    public void set_nombre(String _nombre) {this._nombre = _nombre;}
-    public int get_ROE() {return _ROE;}
-    public void set_ROE(int _ROE) {this._ROE = _ROE;}
-    public int get_deuda() {return _deuda;}
-    public void set_deuda(int _deuda) {this._deuda = _deuda;}
-    public int get_longevidad() {return _longevidad;}
-    public void set_longevidad(int _longevidad) {this._longevidad = _longevidad;}
+
+    public List<Cuenta> get_cuentas() {
+        return this._cuentas;
+    }
+
+
+
+
+    public int size_cuentas() {  //Tamaño Lista
+        return _cuentas.size();
+    }
+
+    public boolean contains_cuenta(String tipo, String periodo) throws ParseException { //Devuelve bool si contiene o no el tipo de cuenta en un periodo
+        return this.get_cuentas().stream().anyMatch(c -> (tipo.equals(c.get_tipo()))
+                && (periodo.equals(c.get_periodoString())));
+    }
+
+        public void add_cuenta(Cuenta cuenta) throws ParseException {   //Agrega la cuenta en la lista
+        if (!this.contains_cuenta(cuenta.get_tipo(), cuenta.get_periodoString())) {
+            this.get_cuentas().add(cuenta);
+        }
+    }
+
+    public Cuenta get_cuenta(String tipo, String periodo) throws ParseException {    //Devuelve la cuenta del tipo, para un periodo
+        return get_cuentas().stream().filter(c -> (tipo.equals(c.get_tipo()))
+                && (periodo.equals(c.get_periodoString()))).
+                findFirst().orElse(null);
+    }
+
 }
