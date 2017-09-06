@@ -4,11 +4,7 @@ import java.text.SimpleDateFormat;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by USER on 19-Apr-17.
@@ -16,12 +12,11 @@ import javax.persistence.Table;
 
 @Entity 
 @Table(name="cuentas")
-
 public class Cuenta implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
-	private long cuentaID;
+    private Long cuentaID;
 	@Column(name = "nombre")
     private String _nombre;
 
@@ -33,7 +28,7 @@ public class Cuenta implements Serializable {
     private Date _periodo;
 
 
-	public long getCuentaID() {
+	public Long getCuentaID() {
 		return cuentaID;
 	}
 	public void setCuentaID(long cuentaID) {

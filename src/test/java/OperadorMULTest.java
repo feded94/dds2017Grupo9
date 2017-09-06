@@ -1,4 +1,3 @@
-
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -25,12 +24,10 @@ import org.junit.Test;
        /* Termino termino = new Termino();
      
         termino.addFactor(numeroA);
-
         termino.addOperador(multiplicar);
-
         termino.addFactor(numeroB); */ 
 
-        assertEquals(5, multiplicar.operar(numeroA.getResultado(), numeroB), 0.01);
+//        assertEquals(5, multiplicar.operar(numeroA.getResultado(), numeroB), 0.01);
         
         
         }
