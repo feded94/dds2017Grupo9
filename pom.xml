@@ -14,34 +14,59 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.2.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<version>1.5.6.RELEASE</version>
+		<relativePath/>
 	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 
 	<dependencies>
+        <!--spring boot-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
 
-		<dependency>
+        <!--sqlite-->
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.20.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.zsoltfabok</groupId>
+            <artifactId>sqlite-dialect</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+
+
+
+        <dependency>
 			<groupId>org.antlr</groupId>
 			<artifactId>antlr4-maven-plugin</artifactId>
 			<version>4.7</version>
 			<type>maven-plugin</type>
-		</dependency>
-
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
 		</dependency>
 
 		<dependency>
@@ -51,42 +76,36 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<optional>true</optional>
-		</dependency>
-
-		<dependency>
 			<groupId>org.drools</groupId>
 			<artifactId>drools-bom</artifactId>
 			<type>pom</type>
-			<version>7.1.0.Beta3</version>
-			<scope>import</scope>
+			<version>7.2.0.Final</version>
+			<!--<scope>import</scope>-->
 		</dependency>
 
 		<dependency>
 			<groupId>org.kie</groupId>
 			<artifactId>kie-api</artifactId>
+            <version>7.2.0.Final</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.drools</groupId>
 			<artifactId>drools-compiler</artifactId>
-			<scope>runtime</scope>
+            <version>7.2.0.Final</version>
+			<!--<scope>runtime</scope>-->
 		</dependency>
-		
-		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-data-jpa</artifactId>
-	    </dependency>
-	
-		<dependency>
-		    <groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.6</version>
-	    </dependency>
+
 
 	</dependencies>
+
+    <repositories>
+        <repository>
+            <id>maven_central</id>
+            <url>https://repo1.maven.org/maven2</url>
+        </repository>
+
+    </repositories>
 
 	<build>
 		<plugins>

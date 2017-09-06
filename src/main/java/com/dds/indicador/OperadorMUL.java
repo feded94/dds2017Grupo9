@@ -6,7 +6,8 @@ public class OperadorMUL implements OperadorFactor {
         return "*";
     }
 
-    public double operar(double factor1, Factor factor2) {
-        return factor1 * factor2.getResultado();
+    public Factor operar(Factor izquierda, Factor derecha) {
+        return new Numero(izquierda.getResultado() * derecha.getResultado());
     }
+
 }

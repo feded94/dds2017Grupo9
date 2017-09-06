@@ -16,10 +16,10 @@ public class Termino {
         }
 
         for (int i = 0; i < masFactores.size(); i++) {
-            OperadorFactor op = operadores.get(i);
-            Factor f = masFactores.get(i);
-
-            resultado = op.operar(resultado, f);
+//            OperadorFactor op = operadores.get(i);
+//            Factor f = masFactores.get(i);
+//
+//            resultado = op.operar(factor, f);
         }
 
         return resultado;

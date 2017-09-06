@@ -30,7 +30,7 @@ import org.junit.Test;
 
         termino.addFactor(numeroB); */ 
 
-        assertEquals(5, multiplicar.operar(numeroA.getResultado(), numeroB), 0.01);
+//        assertEquals(5, multiplicar.operar(numeroA.getResultado(), numeroB), 0.01);
         
         
         }
