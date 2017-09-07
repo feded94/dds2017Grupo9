@@ -16,7 +16,11 @@ public class Cuenta implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
+<<<<<<< HEAD
     private long cuentaID;
+=======
+    private Long cuentaID;
+>>>>>>> 3b3e5fa6844c773ec13813db31b219f1309e7927
 	@Column(name = "nombre")
     private String _nombre;
 
@@ -28,7 +32,7 @@ public class Cuenta implements Serializable {
     private Date _periodo;
 
 
-	public long getCuentaID() {
+	public Long getCuentaID() {
 		return cuentaID;
 	}
 	public void setCuentaID(long cuentaID) {
@@ -66,4 +70,8 @@ public class Cuenta implements Serializable {
     } //verificar si ConsultarVelor sigue funcionando con el Date
 
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 3b3e5fa6844c773ec13813db31b219f1309e7927

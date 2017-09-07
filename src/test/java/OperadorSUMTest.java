@@ -1,45 +1,28 @@
-import static org.junit.Assert.*;
-
-import org.junit.Test;
+package antlr;
 
 import com.dds.indicador.*;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class OperadorSUMTest {
 
 	@Test
-	public void test() throws IndicadorException {
-		
-	
-		Factor numeroA = new Numero(2);
-		Factor numeroB = new Numero(3);
-		Factor numeroC = new Numero(4);
-		OperadorTermino suma = new OperadorSUM();
-		OperadorTermino suma1 = new OperadorSUM();
-		
-		Termino termino1 = new Termino();
-		termino1.addFactor(numeroA);
+	public void testMultiplicar2x3x4() {
+		OperadorFactor multiplicar = new OperadorMUL();
+		Factor izquierda = new Numero(2.0);
+		Factor derecha = new Numero(3.0);
+		Factor resultado = multiplicar.operar(izquierda, derecha);
+		Assert.assertEquals(6.0, resultado.getResultado(), 0.01);
 
-		Termino termino2 = new Termino();
-		termino2.addFactor(numeroB);
-		
-		// testeo 2+3  = 5 
-		assertEquals(5, suma.operar(termino1.getResultado(), termino2), 0.01);
-		
-		
-		
-		Termino termino3 = new Termino();
-		termino3.addFactor(numeroC);
-		
-		// testeo 2+3+4 = 9
-		Indicador indicador = new Indicador();
-		indicador.addTermino(termino1);
-		indicador.addTermino(termino2);
-		indicador.addTermino(termino3);
-		indicador.addOperador(suma);
-		indicador.addOperador(suma1);
-		assertEquals(9, indicador.getResultado(), 0.01);
-		
-		
+		Factor tercerFactor = new Numero(4.0);
+		Factor resultadoFinal = multiplicar.operar(resultado, tercerFactor);
+
+		Assert.assertEquals(24.0, resultadoFinal.getResultado(), 0.01);
 	}
 
-}	
+}
