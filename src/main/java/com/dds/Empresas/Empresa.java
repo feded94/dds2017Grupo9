@@ -4,13 +4,24 @@ import com.dds.Cuentas.Cuenta;
 import java.util.ArrayList;
 import java.util.List;
 import java.text.ParseException;
+import java.io.Serializable;
+
+import javax.persistence.*;
+
 
 /**
  * Created by Federico on 28/8/2017.
  */
-
+//@Entity
+//@Table(name="empresas")
 public class Empresa {
+	
+	//private static final long serialVersionUID = 1L;
+	//@Id
+	//@GeneratedValue
+	//private Long ID;
     private String _nombre;
+    //@OneToMany(mappedBy="cuenta")
     private List<Cuenta> _cuentas;
 
     public Empresa(String nombre) {
@@ -49,5 +60,6 @@ public class Empresa {
                 && (periodo.equals(c.get_periodoString()))).
                 findFirst().orElse(null);
     }
+
 
 }
