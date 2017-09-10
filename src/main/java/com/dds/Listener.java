@@ -7,14 +7,16 @@ import org.antlr.v4.runtime.tree.ParseTree;
 
 import com.dds.antlr.IndicadorBaseListener;
 
+import javax.persistence.criteria.CriteriaBuilder;
+
 public class Listener extends IndicadorBaseListener {
     private Indicador indicadorActual;
 
-    private OperadorTermino suma;
-    private OperadorTermino resta;
+    private Operador suma;
+    private Operador resta;
 
-    private OperadorFactor mult;
-    private OperadorFactor div;
+    private Operador mult;
+    private Operador div;
 
     public Listener() {
         super();
@@ -43,7 +45,8 @@ public class Listener extends IndicadorBaseListener {
     }
 
     private Indicador iterateIndicador(ParseTree ctx) throws IndicadorException {
-        Indicador indicador = new Indicador();
+        Indicador indicador = null;
+        Operador opActual = null;
 
         for (int i = 0; i < ctx.getChildCount(); i++) {
             ParseTree child = ctx.getChild(i);
@@ -58,16 +61,20 @@ public class Listener extends IndicadorBaseListener {
                 System.out.printf("Nodo valido: %s\n", child.getText());
 
                 if (child.getText().equals(suma.getSimbolo())) {
-                    indicador.addOperador(suma);
+                    opActual = suma;
                 }
 
                 else if (child.getText().equals(resta.getSimbolo())) {
-                    indicador.addOperador(resta);
+                    opActual = resta;
                 }
 
                 else {
                     /* Es un termino */
-                    indicador.addTermino(iterateTermino(child));
+                    if (indicador == null)
+                        indicador = iterateTermino(child);
+                    else {
+                        indicador = indicador.operarCon(opActual, iterateTermino(child));
+                    }
                 }
             }
         }
@@ -75,8 +82,9 @@ public class Listener extends IndicadorBaseListener {
         return indicador;
     }
 
-    private Termino iterateTermino(ParseTree ctx) throws IndicadorException {
-        Termino termino = new Termino();
+    private Indicador iterateTermino(ParseTree ctx) throws IndicadorException {
+        Indicador termino = null;
+        Operador opActual = null;
 
         for (int i = 0; i < ctx.getChildCount(); i++) {
             ParseTree child = ctx.getChild(i);
@@ -91,16 +99,20 @@ public class Listener extends IndicadorBaseListener {
                 System.out.printf("Nodo valido: %s\n", child.getText());
 
                 if (child.getText().equals(mult.getSimbolo())) {
-                    termino.addOperador(mult);
+                    opActual = mult;
                 }
 
                 else if (child.getText().equals(div.getSimbolo())) {
-                    termino.addOperador(div);
+                    opActual = div;
                 }
 
                 else {
                     /* Es un factor */
-                    termino.addFactor(iterateFactor(child));
+                    if (termino == null)
+                        termino = iterateFactor(child);
+                    else {
+                        termino = termino.operarCon(opActual, iterateTermino(child));
+                    }
                 }
             }
         }
@@ -108,11 +120,11 @@ public class Listener extends IndicadorBaseListener {
         return termino;
     }
 
-    private Factor iterateFactor(ParseTree ctx) throws IndicadorException {
+    private Indicador iterateFactor(ParseTree ctx) throws IndicadorException {
         char firstChar = ctx.getText().charAt(0);
 
         if (Character.isDigit(firstChar)) {
-            return new Numero(Double.parseDouble(ctx.getText()));
+            return Indicador.getIndicador(Double.parseDouble(ctx.getText()));
         }
 
         if (firstChar == '(') {
@@ -120,6 +132,6 @@ public class Listener extends IndicadorBaseListener {
             return iterateIndicador(ctx.getChild(1));
         }
 
-        return new ID(ctx.getText());
+        return Indicador.getIndicador(ctx.getText());
     }
 }

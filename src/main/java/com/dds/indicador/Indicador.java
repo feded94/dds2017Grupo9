@@ -2,65 +2,30 @@ package com.dds.indicador;
 
 import java.util.ArrayList;
 
-public class Indicador implements Factor {
-    private Termino termino;
-    private ArrayList<OperadorTermino> operadores;
-    private ArrayList<Termino> masTerminos;
-
-    @Override
-    public double getResultado() {
-        double resultado = termino.getResultado();
-
-        if (operadores == null) {
-            return resultado;
-        }
-
-        for (int i = 0; i < masTerminos.size(); i++) {
-            OperadorTermino op = operadores.get(i);
-            Termino t = masTerminos.get(i);
-
-            resultado = op.operar(resultado, t);
-        }
-
-        return resultado;
+public abstract class Indicador {
+    public static Indicador getIndicador(String nombre) {
+        return new ID(nombre);
     }
 
-    public void addTermino(Termino termino) {
-        if (this.termino == null) {
-            this.termino = termino;
-        }
-        else {
-            if (masTerminos == null) {
-                masTerminos = new ArrayList<Termino>();
-            }
-            masTerminos.add(termino);
-        }
+    public static Indicador getIndicador(double valor) {
+        return new Numero(valor);
     }
 
-    public void addOperador(OperadorTermino operador) {
-        if (operadores == null) {
-            operadores = new ArrayList<OperadorTermino>();
-        }
-        operadores.add(operador);
+    public static Indicador getIndicador(Indicador izq, Operador op, Indicador der) {
+        return new IndicadorCompuesto(izq, op, der);
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(termino.toString());
-
-        if (operadores == null) {
-            return sb.toString();
-        }
-
-        for (int i = 0; i < masTerminos.size(); i++) {
-            OperadorTermino op = operadores.get(i);
-            Termino t = masTerminos.get(i);
-
-            sb.append(op.getSimbolo());
-            sb.append(t.toString());
-        }
-
-        return sb.toString();
+    public Indicador operarCon(Operador op, String nombre) {
+        return new IndicadorCompuesto(this, op, getIndicador(nombre));
     }
+
+    public Indicador operarCon(Operador op, double numero) {
+        return new IndicadorCompuesto(this, op, getIndicador(numero));
+    }
+
+    public Indicador operarCon(Operador op, Indicador indicador) {
+        return new IndicadorCompuesto(this, op, indicador);
+    }
+
+    public abstract double getResultado();
 }

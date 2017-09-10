@@ -1,9 +1,9 @@
 package com.dds.indicador;
 
-public class Numero implements Factor{
+public class Numero extends Indicador {
     private double valor;
 
-    public Numero(double valor) {
+    protected Numero(double valor) {
         this.valor = valor;
     }
 

@@ -1,9 +1,9 @@
 package com.dds.indicador;
 
-public class ID implements Factor{
+public class ID extends Indicador {
     private String idIndicador;
 
-    public ID(String idIndicador) {
+    protected ID(String idIndicador) {
         this.idIndicador = idIndicador;
     }
 

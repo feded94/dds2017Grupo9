@@ -1,13 +1,13 @@
 package com.dds.indicador;
 
-public class OperadorMUL implements OperadorFactor {
+public class OperadorMUL implements Operador {
 
     public String getSimbolo() {
         return "*";
     }
 
-    public Factor operar(Factor izquierda, Factor derecha) {
-        return new Numero(izquierda.getResultado() * derecha.getResultado());
+    public double operar(Indicador izquierda, Indicador derecha) {
+        return izquierda.getResultado() * derecha.getResultado();
     }
 
 }

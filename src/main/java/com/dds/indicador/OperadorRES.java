@@ -1,12 +1,12 @@
 package com.dds.indicador;
 
-public class OperadorRES implements OperadorTermino {
+public class OperadorRES implements Operador {
 
     public String getSimbolo() {
         return "-";
     }
 
-    public double operar(double termino1, Termino termino2) {
-        return termino1 - termino2.getResultado();
+    public double operar(Indicador termino1, Indicador termino2) {
+        return termino1.getResultado() - termino2.getResultado();
     }
 }
