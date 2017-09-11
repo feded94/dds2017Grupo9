@@ -1,4 +1,7 @@
 package com.dds.Metodologias;
+import com.dds.Empresas.Empresa;
+
+import java.util.ArrayList;
 
 
 /**
@@ -6,19 +9,42 @@ package com.dds.Metodologias;
  */
 
 public class Metodologia {
-    private int _periodo;
-    private boolean _condicion;
 
-    public int get_periodo() {
-        return _periodo;
+        private String _nombreMetodologia;
+
+        private ArrayList<Condicion> _condiciones = new ArrayList<Condicion>();
+
+
+
+
+        public String getNombreMetodologia() {return _nombreMetodologia;}
+
+        public void setNombreMetodologia(String nombreMetodologia) {this._nombreMetodologia = nombreMetodologia;}
+
+
+
+        public ArrayList getCondiciones() {
+            return _condiciones;
+        }
+
+        public void addCondicion(Condicion condicion) {
+           _condiciones.add(condicion);
+        }
+
+        public void addCondiciones(ArrayList<Condicion> condicionesAAgregar){
+            condicionesAAgregar.forEach(condicion -> addCondicion(condicion));
+        }
+
+       /* public boolean pasaCondiciones(Empresa empresa, int primerAnio, int anioHasta){
+            return condiciones.stream().allMatch(condicion -> condicion.pasaCondicion(empresa, primerAnio, anioHasta));
+            for(int i = 0; i < condiciones.size(); i++){
+                if(condiciones.get(i).pasaCondicion(empresa, primerAnio, anioHasta))){
+                return condiciones.stream().allMatch(condicion -> condicion.pasaCondicion(empresa, primerAnio, anioHasta));
+                }
+            }
+            return pasar;
+        }*/
+
+
+
     }
-    public void set_periodo(int _periodo) {
-        this._periodo = _periodo;
-    }
-    public boolean get_condicion() {
-        return _condicion;
-    }
-    public void set_condicion(boolean _condicion) {
-        this._condicion = _condicion;
-    }
-}
