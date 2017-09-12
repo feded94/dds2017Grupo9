@@ -1,10 +1,7 @@
 package com.dds.Metodologias;
+
 import com.dds.Empresas.Empresa;
 
-
-/**
- * Created by Federico on 11/9/2017.
- */
 public class Condicion {
 
     public Condicion(String numero, String indicador) {
@@ -14,7 +11,7 @@ public class Condicion {
 
     private String metodologia;
     private String numero;
-    String indicador;
+    private String indicador;
     private String tipo;
 
     public String getTipo() {return tipo;}

@@ -1,14 +1,10 @@
 package com.dds.Cuentas;
+
 import java.util.Date;
 import java.text.SimpleDateFormat;
-
 import java.io.Serializable;
 
 import javax.persistence.*;
-
-/**
- * Created by USER on 19-Apr-17.
- */
 
 @Entity 
 @Table(name="cuentas")
@@ -25,6 +21,7 @@ public class Cuenta implements Serializable {
     private String _tipo;
 	@Column(name = "valor")
     private int _valor;
+	//@Column (name= "periodo")
     private Date _periodo;
 
 

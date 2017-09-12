@@ -8,9 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.Collection;
 
-/**
- * Created by USER on 19-Apr-17.
- */
 @RestController
 @RequestMapping("api/cuentas")
 public class CuentaController {

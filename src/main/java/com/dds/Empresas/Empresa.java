@@ -1,4 +1,5 @@
 package com.dds.Empresas;
+
 import com.dds.Cuentas.Cuenta;
 
 import java.util.ArrayList;
@@ -8,10 +9,6 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
-
-/**
- * Created by Federico on 28/8/2017.
- */
 //@Entity
 //@Table(name="empresas")
 public class Empresa {
