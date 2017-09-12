@@ -1,5 +1,8 @@
 package com.dds;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -9,7 +12,10 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import com.dds.Cuentas.Cuenta;
-import com.dds.Cuentas.CuentaRepository;
+//import com.dds.Cuentas.CuentaRepository;
+import com.dds.Empresas.Empresa;
+import com.dds.Empresas.EmpresaRepository;
+
 import org.springframework.context.annotation.Configuration;
 
 @SpringBootApplication
@@ -17,12 +23,13 @@ import org.springframework.context.annotation.Configuration;
 @EnableAutoConfiguration
 @EnableJpaRepositories
 @Configuration
-@EntityScan(basePackages = {"com.dds.Cuentas"})
+@EntityScan(basePackages =  {"com.dds.Cuentas", "com.dds.Empresas"})
 public class Grupo9Application implements CommandLineRunner {
 
     @Autowired
-	CuentaRepository cuentaRepository;
-	
+	//CuentaRepository cuentaRepository;
+	EmpresaRepository empRepo;
+    
 	public static void main(String[] args) {
 		SpringApplication.run(Grupo9Application.class, args);
 		
@@ -31,10 +38,16 @@ public class Grupo9Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... arg0) throws Exception {
+		Date date = new Date();
 		Cuenta cuenta1 = new Cuenta();
-		cuenta1.set_nombre("face");
-		cuenta1.set_tipo("tipo1");
-		cuenta1.set_valor(200);
-		cuentaRepository.save(cuenta1);
+		cuenta1.setNombre("face");
+		cuenta1.setTipo("tipo1");
+		cuenta1.setValor(200);
+		cuenta1.setPeriodo(date);
+		Empresa emp1 = new Empresa();
+		emp1.setNombre("mark"); 
+		emp1.addCuenta(cuenta1);
+		empRepo.save(emp1);
+		
 	}
 }

@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.io.Serializable;
 
 import javax.persistence.*;
+import com.dds.Empresas.*;
 
 /**
  * Created by USER on 19-Apr-17.
@@ -17,16 +18,25 @@ public class Cuenta implements Serializable {
 	@Id
 	@GeneratedValue
     private Long cuentaID;
+	
+	@ManyToOne
+	@JoinColumn(name="empresa")
+	private Empresa empresa;
+	
 	@Column(name = "nombre")
-    private String _nombre;
+    private String nombre;
 
 
 	@Column(name= "tipo")
-    private String _tipo;
+    private String tipo;
 	@Column(name = "valor")
-    private int _valor;
-    private Date _periodo;
+    private int valor;
+    private Date periodo;
 
+    
+    public Cuenta(){
+    
+    }
 
 	public Long getCuentaID() {
 		return cuentaID;
@@ -35,33 +45,40 @@ public class Cuenta implements Serializable {
 		this.cuentaID = cuentaID;
 	}
 	
-    public String get_nombre() {
-        return _nombre;
+    public String getNombre() {
+        return nombre;
     }
-    public void set_nombre(String _nombre) {
-        this._nombre = _nombre;
+    public void setNombre(String _nombre) {
+        this.nombre = _nombre;
     }
-    public String get_tipo() {
-        return _tipo;
+    public String getTipo() {
+        return tipo;
     }
-    public void set_tipo(String _tipo) {this._tipo = _tipo;}
-    public int get_valor() {return _valor;}
-    public void set_valor(int _valor) {
-        this._valor = _valor;
-    }
-
-    public Date get_periodo() {return _periodo;}
-    public void set_periodo(Date _periodo) {
-        this._periodo = _periodo;
+    public void setTipo(String tipo) {this.tipo = tipo;}
+    public int getValor() {return valor;}
+    public void setValor(int valor) {
+        this.valor = valor;
     }
 
+    public Date getPeriodo() {return periodo;}
+    public void setPeriodo(Date _periodo) {
+        this.periodo = _periodo;
+    }
 
-    public String get_periodoString() {    //Necesario para Empresa
-        return new SimpleDateFormat("yyyyMMdd").format(this._periodo);
+
+    public String getPeriodoString() {    //Necesario para Empresa
+        return new SimpleDateFormat("yyyyMMdd").format(this.periodo);
     }
 
 
     public Integer ConsultarValor(Date _periodo){
         return 0;
     } //verificar si ConsultarVelor sigue funcionando con el Date
+    
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
 }
