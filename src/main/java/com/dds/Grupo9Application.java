@@ -17,6 +17,10 @@ import com.dds.Empresas.Empresa;
 import com.dds.Empresas.EmpresaRepository;
 import com.dds.Metodologias.Condicion;
 import com.dds.Metodologias.CondicionRepository;
+import com.dds.Metodologias.Metodologia;
+import com.dds.Metodologias.MetodologiaRepository;
+import com.dds.indicador.Indicador;
+import com.dds.indicador.Numero;
 import com.dds.Indicadores.*;
 
 import org.springframework.context.annotation.Configuration;
@@ -26,13 +30,14 @@ import org.springframework.context.annotation.Configuration;
 @EnableAutoConfiguration
 @EnableJpaRepositories
 @Configuration
-@EntityScan(basePackages =  {"com.dds.Cuentas", "com.dds.Empresas","com.dds.Metodologias","com.dds.Indicadores"})
+@EntityScan(basePackages =  {"com.dds.Cuentas", "com.dds.Empresas","com.dds.Metodologias","com.dds.Indicadores","com.dds.indicador"})
 public class Grupo9Application implements CommandLineRunner {
 
     @Autowired
 	//CuentaRepository cuentaRepository;
 	EmpresaRepository empRepo;
     CondicionRepository condRepo;
+    MetodologiaRepository metRepo;
     
 	public static void main(String[] args) {
 		SpringApplication.run(Grupo9Application.class, args);
@@ -53,13 +58,14 @@ public class Grupo9Application implements CommandLineRunner {
 		emp1.addCuenta(cuenta1);
 		empRepo.save(emp1);
 		Condicion cond1 = new Condicion();
-		/*IndicadorBusiness indicadorB1 = new IndicadorBusiness();
-		indicadorB1.set_expresion(" a+b");
-		indicadorB1.set_nombre(" indicador de prueba");
-		indicadorB1.set_valor(40.00);*/
+		//IndicadorBusiness indicadorB1 = new IndicadorBusiness();
+		Indicador indicadorprueba = new Numero(4.00);
 		cond1.setNumero(" 44");
 		cond1.setTipo(" tipo 4");
-		cond1.setIndicador(null);
-		condRepo.save(cond1);
+		cond1.setIndicador(indicadorprueba);
+		Metodologia met1 = new Metodologia();
+		met1.setNombreMetodologia("metodologia");
+		met1.addCondicion(cond1);
+//		metRepo.save(met1);
 	}
 }

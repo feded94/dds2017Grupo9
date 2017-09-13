@@ -1,6 +1,6 @@
 package com.dds.Metodologias;
 import com.dds.Empresas.Empresa;
-import com.dds.Indicadores.IndicadorBusiness;
+
 import com.dds.indicador.Indicador;
 
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import javax.persistence.*;
  * Created by Federico on 11/9/2017.
  */
 @Entity
-@Table(name="condiciones")
+
 public class Condicion {
 
 	@Id
@@ -23,9 +23,10 @@ public class Condicion {
 	@ManyToMany
 	Collection <Metodologia> metodologias = new ArrayList<Metodologia>();
     private String numero;
+    
     @OneToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="Indicador_id)")
     private Indicador indicador;
+    
     private String tipo;
 
     public Condicion(){

@@ -7,7 +7,8 @@ import java.util.Collection;
 import javax.persistence.*;
 
 @Entity
-@Table(name="metodologias")
+
+
 public class Metodologia {
 
 		@Id
