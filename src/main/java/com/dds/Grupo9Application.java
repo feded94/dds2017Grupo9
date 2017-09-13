@@ -23,7 +23,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableAutoConfiguration
 @EnableJpaRepositories
 @Configuration
-@EntityScan(basePackages =  {"com.dds.Cuentas", "com.dds.Empresas"})
+@EntityScan(basePackages =  {"com.dds.Cuentas", "com.dds.Empresas","com.dds.Metodologias"})
 public class Grupo9Application implements CommandLineRunner {
 
     @Autowired

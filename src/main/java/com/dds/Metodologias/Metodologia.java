@@ -2,16 +2,19 @@ package com.dds.Metodologias;
 import com.dds.Empresas.Empresa;
 
 import java.util.ArrayList;
+import javax.persistence.*;
 
-
-/**
- * Created by Federico on 28/8/2017.
- */
-
+@Entity
+@Table(name="metodologias")
 public class Metodologia {
 
+		@Id
+		@GeneratedValue
+		private Long ID;
+		
         private String _nombreMetodologia;
 
+        //@OneToMany(mappedBy="metodologia", cascade = CascadeType.ALL)
         private ArrayList<Condicion> _condiciones = new ArrayList<Condicion>();
 
 
