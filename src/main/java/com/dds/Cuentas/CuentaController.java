@@ -15,11 +15,11 @@ public class CuentaController {
     Collection<Cuenta> getCuentas() {
         Collection<Cuenta> cuentas = new ArrayList<Cuenta>();
         Cuenta cuenta1 = new Cuenta();
-        cuenta1.set_nombre("EE");
-        cuenta1.set_valor(532);
+        cuenta1.setNombre("EE");
+        cuenta1.setValor(532);
         Cuenta cuenta2 = new Cuenta();
-        cuenta2.set_nombre("FCF");
-        cuenta2.set_valor(1235);
+        cuenta2.setNombre("FCF");
+        cuenta2.setValor(1235);
         cuentas.add(cuenta1);
         cuentas.add(cuenta2);
         return cuentas;
