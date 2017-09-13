@@ -2,6 +2,8 @@ package com.dds.Metodologias;
 import com.dds.Empresas.Empresa;
 
 import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,8 +16,8 @@ public class Metodologia {
 		
         private String _nombreMetodologia;
 
-        //@OneToMany(mappedBy="metodologia", cascade = CascadeType.ALL)
-        private ArrayList<Condicion> _condiciones = new ArrayList<Condicion>();
+        @ManyToMany(mappedBy="metodologias", cascade = CascadeType.ALL)
+        Collection <Condicion> condiciones = new ArrayList<Condicion>();
 
 
 
@@ -26,12 +28,12 @@ public class Metodologia {
 
 
 
-        public ArrayList getCondiciones() {
-            return _condiciones;
+        public Collection<Condicion> getCondiciones() {
+            return condiciones;
         }
 
         public void addCondicion(Condicion condicion) {
-           _condiciones.add(condicion);
+           condiciones.add(condicion);
         }
 
         public void addCondiciones(ArrayList<Condicion> condicionesAAgregar){

@@ -1,7 +1,9 @@
 package com.dds.indicador;
 
 import java.util.ArrayList;
+import javax.persistence.*;
 
+@Entity
 public abstract class Indicador {
     public static Indicador getIndicador(String nombre) {
         return new ID(nombre);
