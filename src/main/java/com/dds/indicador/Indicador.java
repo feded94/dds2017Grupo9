@@ -1,8 +1,16 @@
 package com.dds.indicador;
 
 import java.util.ArrayList;
+import javax.persistence.*;
+
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 
 public abstract class Indicador {
+	
+	@Id
+	@GeneratedValue
+	private Long id;
     public static Indicador getIndicador(String nombre) {
         return new ID(nombre);
     }
