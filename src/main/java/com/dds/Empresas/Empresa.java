@@ -1,5 +1,6 @@
 package com.dds.Empresas;
 import com.dds.Cuentas.Cuenta;
+import com.dds.Periodos.Periodo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +55,8 @@ public class Empresa {
         return cuentas.size();
     }
 
-    public boolean contains_cuenta(String tipo, String periodo) throws ParseException { //Devuelve bool si contiene o no el tipo de cuenta en un periodo
+
+   public boolean contains_cuenta(String tipo, String periodo) throws ParseException { //Devuelve bool si contiene o no el tipo de cuenta en un periodo
         return this.getCuentas().stream().anyMatch(c -> (tipo.equals(c.getTipo()))
                 && (periodo.equals(c.getPeriodoString())));
     }

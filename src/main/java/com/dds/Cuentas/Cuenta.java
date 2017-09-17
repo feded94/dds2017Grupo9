@@ -3,7 +3,7 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 
 import java.io.Serializable;
-
+import com.dds.Periodos.Periodo;
 import javax.persistence.*;
 import com.dds.Empresas.*;
 
@@ -26,12 +26,16 @@ public class Cuenta implements Serializable {
 	@Column(name = "nombre")
     private String nombre;
 
+    private Date periodo;
 
 	@Column(name= "tipo")
     private String tipo;
 	@Column(name = "valor")
     private int valor;
-    private Date periodo;
+
+	/*@Column(name="periodo")
+    private Periodo periodo;*/
+
 
     
     public Cuenta(){
@@ -60,6 +64,7 @@ public class Cuenta implements Serializable {
         this.valor = valor;
     }
 
+
     public Date getPeriodo() {return periodo;}
     public void setPeriodo(Date _periodo) {
         this.periodo = _periodo;
@@ -70,11 +75,13 @@ public class Cuenta implements Serializable {
         return new SimpleDateFormat("yyyyMMdd").format(this.periodo);
     }
 
+   /* public Periodo getPeriodo() {
+        return periodo;
+    }
+    public void setPeriodo(Periodo periodo) {
+        this.periodo = periodo;
+    }*/
 
-    public Integer ConsultarValor(Date _periodo){
-        return 0;
-    } //verificar si ConsultarVelor sigue funcionando con el Date
-    
 	public Empresa getEmpresa() {
 		return empresa;
 	}
