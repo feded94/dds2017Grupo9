@@ -38,14 +38,15 @@ public class Grupo9Application implements CommandLineRunner {
     @Autowired
 	//CuentaRepository cuentaRepository;
 	EmpresaRepository empRepo;
+	@Autowired
     CondicionRepository condRepo;
+	@Autowired
     MetodologiaRepository metRepo;
+	@Autowired
     PeriodoRepository periodoRepo;
     
 	public static void main(String[] args) {
 		SpringApplication.run(Grupo9Application.class, args);
-		
-		
 	}
 
 	@Override
