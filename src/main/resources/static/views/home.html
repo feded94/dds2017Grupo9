@@ -29,14 +29,20 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th>Cuenta</th>
+                    <th>Empresa</th>
+                    <th>Nombre</th>
+                    <th>Periodo</th>
+                    <th>Tipo</th>
                     <th>Valor</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr ng-repeat="x in hc.cuentas">
-                    <td>{{x._nombre}}</td>
-                    <td>{{x._valor}}</td>
+                    <td>{{x.empresa}}</td>
+                    <td>{{x.nombre}}</td>
+                    <td>{{x.periodo}}</td>
+                    <td>{{x.tipo}}</td>
+                    <td>{{x.valor}}</td>
                 </tr>
                 </tbody>
             </table>

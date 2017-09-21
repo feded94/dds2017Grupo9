@@ -14,7 +14,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.context.annotation.Configuration;
 
 import com.dds.Cuentas.Cuenta;
-//import com.dds.Cuentas.CuentaRepository;
+import com.dds.Cuentas.CuentaRepository;
 import com.dds.Empresas.Empresa;
 import com.dds.Empresas.EmpresaRepository;
 import com.dds.Periodos.Periodo;
@@ -36,7 +36,8 @@ import com.dds.Indicadores.*;
 public class Grupo9Application implements CommandLineRunner {
 
     @Autowired
-	//CuentaRepository cuentaRepository;
+	CuentaRepository cuentaRepository;
+    @Autowired
 	EmpresaRepository empRepo;
 	@Autowired
     CondicionRepository condRepo;
