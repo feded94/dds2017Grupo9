@@ -1,11 +1,10 @@
-package com.dds.Cuentas;
+package com.dds.model;
+
+import com.dds.persistence.Cuenta;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by USER on 20-Sep-17.
- */
 public class CuentaViewModel {
     private Long id;
     private String empresa;

@@ -1,4 +1,6 @@
-package com.dds.indicador;
+package com.dds.model;
+
+import com.dds.persistence.Indicador;
 
 public class OperadorMUL implements Operador {
 

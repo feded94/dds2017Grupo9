@@ -1,4 +1,4 @@
-package com.dds.Indicadores;
+package com.dds.model;
 
 import com.dds.Listener;
 import com.dds.antlr.IndicadorLexer;
@@ -6,11 +6,6 @@ import com.dds.antlr.IndicadorParser;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
-
-/**
- * Created by juan.d on 5/6/2017.
- */
-
 
 public class IndicadorBusiness {
     private Double _valor;
