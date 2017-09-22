@@ -1,13 +1,15 @@
 package com.dds.indicador.test;
 
+import com.dds.model.Operador;
+import com.dds.model.OperadorMUL;
+import com.dds.persistence.Indicador;
+import com.dds.persistence.Numero;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import com.dds.indicador.*;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 @RunWith(SpringRunner.class)

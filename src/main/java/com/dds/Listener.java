@@ -1,13 +1,13 @@
 package com.dds;
 
 import com.dds.antlr.*;
-import com.dds.indicador.*;
+import com.dds.model.*;
+import com.dds.persistence.Indicador;
+import com.dds.persistence.OperadorDIV;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import com.dds.antlr.IndicadorBaseListener;
-
-import javax.persistence.criteria.CriteriaBuilder;
 
 public class Listener extends IndicadorBaseListener {
     private Indicador indicadorActual;

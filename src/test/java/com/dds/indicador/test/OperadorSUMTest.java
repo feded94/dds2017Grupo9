@@ -1,6 +1,9 @@
 package com.dds.indicador.test;
 
-import com.dds.indicador.*;
+import com.dds.model.Operador;
+import com.dds.model.OperadorMUL;
+import com.dds.persistence.Indicador;
+import com.dds.persistence.Numero;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

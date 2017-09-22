@@ -13,39 +13,47 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.context.annotation.Configuration;
 
-import com.dds.Cuentas.Cuenta;
-import com.dds.Cuentas.CuentaRepository;
-import com.dds.Empresas.Empresa;
-import com.dds.Empresas.EmpresaRepository;
-import com.dds.Periodos.Periodo;
-import com.dds.Periodos.PeriodoRepository;
-import com.dds.Metodologias.Condicion;
-import com.dds.Metodologias.CondicionRepository;
-import com.dds.Metodologias.Metodologia;
-import com.dds.Metodologias.MetodologiaRepository;
-import com.dds.indicador.Indicador;
-import com.dds.indicador.Numero;
-import com.dds.Indicadores.*;
+import com.dds.persistence.Cuenta;
+import com.dds.persistence.CuentaRepository;
+import com.dds.persistence.Empresa;
+import com.dds.persistence.EmpresaRepository;
+import com.dds.persistence.Periodo;
+import com.dds.persistence.PeriodoRepository;
+import com.dds.persistence.Condicion;
+import com.dds.persistence.CondicionRepository;
+import com.dds.persistence.Metodologia;
+import com.dds.persistence.MetodologiaRepository;
+import com.dds.persistence.Indicador;
+import com.dds.persistence.Numero;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.dds"})
 @EnableAutoConfiguration
 @EnableJpaRepositories
 @Configuration
-@EntityScan(basePackages =  {"com.dds.Cuentas", "com.dds.Empresas","com.dds.Metodologias","com.dds.Indicadores","com.dds.indicador","com.dds.Periodos"})
+@EntityScan(basePackages =  {"com.dds.persistence","com.dds.model"})
 public class Grupo9Application implements CommandLineRunner {
 
-    @Autowired
+    final
 	CuentaRepository cuentaRepository;
-    @Autowired
+    final
 	EmpresaRepository empRepo;
+	final
+	CondicionRepository condRepo;
+	final
+	MetodologiaRepository metRepo;
+	final
+	PeriodoRepository periodoRepo;
+
 	@Autowired
-    CondicionRepository condRepo;
-	@Autowired
-    MetodologiaRepository metRepo;
-	@Autowired
-    PeriodoRepository periodoRepo;
-    
+	public Grupo9Application(CuentaRepository cuentaRepository, EmpresaRepository empRepo, CondicionRepository condRepo, MetodologiaRepository metRepo, PeriodoRepository periodoRepo) {
+		this.cuentaRepository = cuentaRepository;
+		this.empRepo = empRepo;
+		this.condRepo = condRepo;
+		this.metRepo = metRepo;
+		this.periodoRepo = periodoRepo;
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(Grupo9Application.class, args);
 	}
