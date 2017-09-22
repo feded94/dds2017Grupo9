@@ -1,6 +1,5 @@
-package com.dds.Empresas;
-import com.dds.Cuentas.Cuenta;
-import com.dds.Periodos.Periodo;
+package com.dds.persistence;
+import com.dds.persistence.Cuenta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,10 +8,6 @@ import java.text.ParseException;
 
 import javax.persistence.*;
 
-
-/**
- * Created by Federico on 28/8/2017.
- */
 @Entity
 @Table(name="empresas")
 public class Empresa {

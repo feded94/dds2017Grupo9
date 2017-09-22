@@ -1,4 +1,6 @@
-package com.dds.indicador;
+package com.dds.persistence;
+
+import com.dds.persistence.Indicador;
 
 public class Numero extends Indicador {
     private double valor;

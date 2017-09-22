@@ -1,5 +1,6 @@
-package com.dds.Metodologias;
-import com.dds.Empresas.Empresa;
+package com.dds.persistence;
+
+import com.dds.persistence.Condicion;
 
 import java.util.ArrayList;
 import java.util.Collection;

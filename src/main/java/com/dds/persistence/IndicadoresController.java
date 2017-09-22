@@ -1,5 +1,6 @@
-package com.dds.Indicadores;
+package com.dds.persistence;
 
+import com.dds.model.IndicadorBusiness;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

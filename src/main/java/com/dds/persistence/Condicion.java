@@ -1,16 +1,11 @@
-package com.dds.Metodologias;
-import com.dds.Empresas.Empresa;
-
-import com.dds.indicador.Indicador;
+package com.dds.persistence;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.*;
 
-/**
- * Created by Federico on 11/9/2017.
- */
+
 @Entity
 
 public class Condicion {

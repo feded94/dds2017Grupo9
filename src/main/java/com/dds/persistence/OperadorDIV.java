@@ -1,4 +1,7 @@
-package com.dds.indicador;
+package com.dds.persistence;
+
+import com.dds.model.Operador;
+import com.dds.persistence.Indicador;
 
 public class OperadorDIV implements Operador {
     @Override

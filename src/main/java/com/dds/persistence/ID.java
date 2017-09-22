@@ -1,4 +1,4 @@
-package com.dds.indicador;
+package com.dds.persistence;
 
 public class ID extends Indicador {
     private String idIndicador;

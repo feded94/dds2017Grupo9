@@ -1,5 +1,6 @@
-package com.dds.Metodologias;
+package com.dds.persistence;
 
+import com.dds.persistence.Condicion;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

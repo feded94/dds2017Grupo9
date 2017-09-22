@@ -1,4 +1,4 @@
-package com.dds.Periodos;
+package com.dds.persistence;
 
 import java.text.SimpleDateFormat;
 import javax.persistence.*;

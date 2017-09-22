@@ -1,6 +1,7 @@
-package com.dds.indicador;
+package com.dds.persistence;
 
-import java.util.ArrayList;
+import com.dds.model.Operador;
+
 import javax.persistence.*;
 
 @Entity

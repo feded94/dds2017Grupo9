@@ -1,11 +1,9 @@
-package com.dds.Cuentas;
+package com.dds.persistence;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
 import java.io.Serializable;
-import com.dds.Periodos.Periodo;
 import javax.persistence.*;
-import com.dds.Empresas.*;
 
 /**
  * Created by USER on 19-Apr-17.
