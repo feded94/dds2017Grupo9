@@ -1,8 +1,8 @@
 package com.dds;
 
-import java.time.LocalDate;
-import java.util.Date;
-
+import com.dds.persistence.services.CuentaService;
+import com.dds.persistence.services.EmpresaService;
+import com.dds.persistence.services.IndicadorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -13,46 +13,24 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.context.annotation.Configuration;
 
-import com.dds.persistence.Cuenta;
-import com.dds.persistence.CuentaRepository;
-import com.dds.persistence.Empresa;
-import com.dds.persistence.EmpresaRepository;
-import com.dds.persistence.Periodo;
-import com.dds.persistence.PeriodoRepository;
-import com.dds.persistence.Condicion;
-import com.dds.persistence.CondicionRepository;
-import com.dds.persistence.Metodologia;
-import com.dds.persistence.MetodologiaRepository;
-import com.dds.persistence.Indicador;
-import com.dds.persistence.Numero;
+import java.sql.Date;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.dds"})
-@EnableAutoConfiguration
-@EnableJpaRepositories
 @Configuration
-@EntityScan(basePackages =  {"com.dds.persistence","com.dds.model"})
+@EnableAutoConfiguration
+@EnableJpaRepositories(basePackages = {"com.dds.persistence.repositories"})
+@ComponentScan(basePackages = {"com.dds"})
+@EntityScan(basePackages =  {"com.dds.model", "com.dds.persistence"})
 public class Grupo9Application implements CommandLineRunner {
+    private final CuentaService cuentaService;
+	private final IndicadorService indicadorService;
+	private final EmpresaService empresaService;
 
-    final
-	CuentaRepository cuentaRepository;
-    final
-	EmpresaRepository empRepo;
-	final
-	CondicionRepository condRepo;
-	final
-	MetodologiaRepository metRepo;
-	final
-	PeriodoRepository periodoRepo;
-
-	@Autowired
-	public Grupo9Application(CuentaRepository cuentaRepository, EmpresaRepository empRepo, CondicionRepository condRepo, MetodologiaRepository metRepo, PeriodoRepository periodoRepo) {
-		this.cuentaRepository = cuentaRepository;
-		this.empRepo = empRepo;
-		this.condRepo = condRepo;
-		this.metRepo = metRepo;
-		this.periodoRepo = periodoRepo;
-	}
+    public Grupo9Application(CuentaService cuentaService, IndicadorService indicadorService, EmpresaService empresaService) {
+        this.cuentaService = CuentaService.getService();
+        this.indicadorService = IndicadorService.getService();
+        this.empresaService = EmpresaService.getService();
+    }
 
 	public static void main(String[] args) {
 		SpringApplication.run(Grupo9Application.class, args);
@@ -60,6 +38,7 @@ public class Grupo9Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... arg0) throws Exception {
+		/*
 		Date date = new Date();
 		Cuenta cuenta1 = new Cuenta();
 		cuenta1.setNombre("face");
@@ -86,7 +65,8 @@ public class Grupo9Application implements CommandLineRunner {
 
 		Metodologia met1 = new Metodologia();
 		met1.setNombreMetodologia("metodologia");
-		met1.addCondicion(cond1);
+		//met1.addCondicion(cond1);
 //		metRepo.save(met1);
+*/
 	}
 }

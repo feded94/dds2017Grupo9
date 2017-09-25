@@ -1,15 +1,13 @@
-package com.dds;
+package com.dds.model.indicador;
 
-import com.dds.antlr.*;
-import com.dds.model.*;
-import com.dds.persistence.Indicador;
-import com.dds.persistence.OperadorDIV;
+import com.dds.antlr.IndicadorParser;
+import com.dds.model.indicador.*;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import com.dds.antlr.IndicadorBaseListener;
 
-public class Listener extends IndicadorBaseListener {
+public class IndicadorListener extends IndicadorBaseListener {
     private Indicador indicadorActual;
 
     private Operador suma;
@@ -18,7 +16,7 @@ public class Listener extends IndicadorBaseListener {
     private Operador mult;
     private Operador div;
 
-    public Listener() {
+    public IndicadorListener() {
         super();
 
         this.suma = new OperadorSUM();

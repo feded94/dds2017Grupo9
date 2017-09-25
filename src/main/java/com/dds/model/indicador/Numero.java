@@ -1,6 +1,4 @@
-package com.dds.persistence;
-
-import com.dds.persistence.Indicador;
+package com.dds.model.indicador;
 
 public class Numero extends Indicador {
     private double valor;
@@ -10,7 +8,7 @@ public class Numero extends Indicador {
     }
 
     @Override
-    public double getResultado() {
+    public double getResultado(String nombreEmpresa, Integer periodo) {
         return valor;
     }
 
