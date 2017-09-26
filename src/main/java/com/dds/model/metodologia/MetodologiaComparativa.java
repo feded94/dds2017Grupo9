@@ -9,7 +9,7 @@ public class MetodologiaComparativa implements Metodologia {
     private final OperadorBinario operador;
     private final int periodos;
 
-    public MetodologiaComparativa(Indicador indicador, OperadorBinario operador, int periodos) {
+    public MetodologiaComparativa(Indicador indicador, int periodos, OperadorBinario operador) {
         this.indicador = indicador;
         this.operador = operador;
         this.periodos = periodos;
