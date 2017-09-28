@@ -6,7 +6,7 @@ import com.dds.persistence.services.IndicadorService;
 public class ID extends Indicador {
     private String id;
 
-    protected ID(String id) {
+    public ID(String id) {
         this.id = id;
     }
 

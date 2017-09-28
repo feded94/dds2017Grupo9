@@ -3,6 +3,7 @@ package com.dds.persistence.test;
 import com.dds.persistence.entities.Cuenta;
 import com.dds.persistence.entities.Empresa;
 import com.dds.persistence.services.*;
+import edu.emory.mathcs.backport.java.util.Arrays;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -64,4 +65,60 @@ public class RepositoryTest {
         );
     }
 
+    @Test
+    public void consultaPeriodosTest() {
+        Empresa empresa = empresaService.save("EmpresaX", Date.valueOf("2017-01-01"));
+        cuentaService.save("Cuenta", empresa, 0, 0);
+        cuentaService.save("Cuenta", empresa, 1, 112);
+        cuentaService.save("Cuenta2", empresa, 1, 112);
+        cuentaService.save("Cuenta3", empresa, 1, 111);
+        cuentaService.save("Cuenta2", empresa, 3, 333);
+
+        Assert.assertEquals(
+                3,
+                empresaService.getUltimoPeriodo("EmpresaX"),
+                0
+        );
+
+        Assert.assertEquals(
+                3,
+                empresaService.getCantidadPeriodos("EmpresaX"),
+                0
+        );
+
+        cuentaService.save("Cuenta5", empresa, 9, 999);
+        cuentaService.save("Cuenta5", empresa, 15, 151515);
+
+        Assert.assertEquals(
+                15,
+                empresaService.getUltimoPeriodo("EmpresaX"),
+                0
+        );
+
+        Assert.assertEquals(
+                5,
+                empresaService.getCantidadPeriodos("EmpresaX"),
+                0
+        );
+
+        List<Integer> expectedPeriodos = Arrays.asList(new Integer[]{0, 1, 3, 9, 15});
+        List<Integer> actualPeriodos = empresaService.getUltimosPeriodos("EmpresaX", 5);
+
+        Assert.assertTrue(actualPeriodos.containsAll(expectedPeriodos));
+        Assert.assertTrue(actualPeriodos.size() == expectedPeriodos.size());
+    }
+
+    @Test
+    public void consultaPeriodosTest2() {
+        Assert.assertEquals(
+                0,
+                empresaService.getCantidadPeriodos("EmpresaX"),
+                0
+        );
+
+        Assert.assertEquals(
+                null,
+                empresaService.getUltimoPeriodo("EmpresaX")
+        );
+    }
 }

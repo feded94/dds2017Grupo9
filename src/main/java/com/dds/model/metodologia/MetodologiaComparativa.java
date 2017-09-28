@@ -1,16 +1,19 @@
 package com.dds.model.metodologia;
 
-import com.dds.model.indicador.Indicador;
+import com.dds.model.indicador.ID;
 import com.dds.model.metodologia.operadores.OperadorBinario;
 import com.dds.persistence.entities.Empresa;
 
 public class MetodologiaComparativa implements Metodologia {
-    private final Indicador indicador;
+    private final ID cuentaIndicador;
     private final OperadorBinario operador;
     private final int periodos;
 
-    public MetodologiaComparativa(Indicador indicador, int periodos, OperadorBinario operador) {
-        this.indicador = indicador;
+    /**
+        Usar MetodologiaBuilder para construir esta clase.
+     */
+    protected MetodologiaComparativa(String idCuentaIndicador, int periodos, OperadorBinario operador) {
+        this.cuentaIndicador = new ID(idCuentaIndicador);
         this.operador = operador;
         this.periodos = periodos;
     }
@@ -30,5 +33,17 @@ public class MetodologiaComparativa implements Metodologia {
 
     public boolean evaluar(Empresa empresa1, Empresa empresa2) {
         return evaluar(empresa1.getNombreEmpresa(), empresa2.getNombreEmpresa());
+    }
+
+    public ID getCuentaIndicador() {
+        return cuentaIndicador;
+    }
+
+    public OperadorBinario getOperador() {
+        return operador;
+    }
+
+    public int getPeriodos() {
+        return periodos;
     }
 }
