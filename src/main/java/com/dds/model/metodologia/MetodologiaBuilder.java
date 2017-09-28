@@ -8,16 +8,16 @@ public class MetodologiaBuilder {
         return new CondicionBuilder(idCuentaIndicador, periodos);
     }
 
-    private class CondicionBuilder {
+    public class CondicionBuilder {
         private final String idCuentaIndicador;
         private final int periodos;
 
-        public CondicionBuilder(String idCuentaIndicador, int periodos) {
+        private CondicionBuilder(String idCuentaIndicador, int periodos) {
             this.idCuentaIndicador = idCuentaIndicador;
             this.periodos = periodos;
         }
 
-        public Metodologia setOperador(OperadorUnario operadorUnario) {
+        public MetodologiaTaxativa setOperador(OperadorUnario operadorUnario) {
             return new MetodologiaTaxativa(idCuentaIndicador, periodos, operadorUnario);
         }
 
@@ -25,12 +25,12 @@ public class MetodologiaBuilder {
             return new CondicionBinariaBuilder(idCuentaIndicador, periodos, operadorBinario);
         }
 
-        private class CondicionBinariaBuilder {
+        public class CondicionBinariaBuilder {
             private final String idCuentaIndicador;
             private final int periodos;
             private final OperadorBinario operador;
 
-            public CondicionBinariaBuilder(String idCuentaIndicador, int periodos, OperadorBinario operador) {
+            private CondicionBinariaBuilder(String idCuentaIndicador, int periodos, OperadorBinario operador) {
                 this.idCuentaIndicador = idCuentaIndicador;
                 this.periodos = periodos;
                 this.operador = operador;

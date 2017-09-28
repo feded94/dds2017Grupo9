@@ -8,6 +8,7 @@ import com.dds.model.metodologia.operadores.OperadorUnario;
 import com.dds.persistence.entities.Empresa;
 import com.dds.persistence.services.EmpresaService;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class MetodologiaTaxativa implements Metodologia {
@@ -41,13 +42,23 @@ public class MetodologiaTaxativa implements Metodologia {
     public boolean evaluar(String nombreEmpresa) throws MetodologiaException {
         Integer cantidadPeriodos = EmpresaService.getService().getCantidadPeriodos(nombreEmpresa);
         if (cantidadPeriodos == null || cantidadPeriodos < periodos)
-            throw new MetodologiaException("Esta empresa no tiene suficientes periodos para ser evaluado.");
+            throw new MetodologiaException("Esta empresa no tiene suficientes periodos para ser evaluada.");
 
         List<Integer> listaPeriodos = EmpresaService.getService().getUltimosPeriodos(nombreEmpresa, periodos);
-        for (Integer periodo : listaPeriodos) {
+
+        if (operador instanceof OperadorUnario) {
+            return ((OperadorUnario) operador).evaluar(this.getResultados(nombreEmpresa, listaPeriodos));
+        }
+
+        /* operador instanceof OperadorBinario */
+        return ((OperadorBinario) operador).evaluar(this.getResultados(nombreEmpresa, listaPeriodos), operando);
+    }
+
+    private List<Double> getResultados(String nombreEmpresa, List<Integer> periodos) throws MetodologiaException {
+        List<Double> result = new LinkedList<>();
+        for (int periodo : periodos) {
             try {
-                // TODO
-                cuentaIndicador.getResultado(nombreEmpresa, periodo);
+                result.add(cuentaIndicador.getResultado(nombreEmpresa, periodo));
             }
             catch (IndicadorException e) {
                 throw new MetodologiaException("No se encontro el valor de " + "\"" + cuentaIndicador + "\""
@@ -55,7 +66,7 @@ public class MetodologiaTaxativa implements Metodologia {
             }
         }
 
-        return true;
+        return result;
     }
 
     public boolean evaluar(Empresa empresa) throws MetodologiaException {
