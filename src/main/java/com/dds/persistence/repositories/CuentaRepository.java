@@ -12,9 +12,9 @@ import java.util.List;
 public interface CuentaRepository extends CrudRepository<Cuenta, CuentaPK> {
     Cuenta save(Cuenta cuenta);
 
-    Cuenta findById_NombreCuentaAndEmpresa_NombreEmpresaAndId_Periodo(String nombreCuenta,
-                                                                      String nombreEmpresa,
-                                                                      Integer periodo);
+    Cuenta findById_NombreCuentaAndId_NombreEmpresaAndId_Periodo(String nombreCuenta,
+                                                                 String nombreEmpresa,
+                                                                 Integer periodo);
 
     List<Cuenta> findById_NombreEmpresa(String nombreEmpresa);
 }

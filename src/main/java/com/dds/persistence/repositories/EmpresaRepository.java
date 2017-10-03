@@ -20,7 +20,7 @@ public interface EmpresaRepository extends CrudRepository<Empresa, String> {
     @Query(nativeQuery = true,
             value = "SELECT DISTINCT periodo " +
                     "FROM t_cuenta " +
-                    "WHERE empresa_nombre_empresa = ?1 " +
+                    "WHERE empresa = ?1 " +
                     "ORDER BY periodo DESC " +
                     "LIMIT 1")
     Integer getLastPeriod(String nombreEmpresa);
@@ -34,7 +34,7 @@ public interface EmpresaRepository extends CrudRepository<Empresa, String> {
     @Query(nativeQuery = true,
             value = "SELECT DISTINCT periodo " +
                     "FROM t_cuenta " +
-                    "WHERE empresa_nombre_empresa = ?1 " +
+                    "WHERE empresa = ?1 " +
                     "ORDER BY periodo DESC " +
                     "LIMIT ?2")
     List<Integer> getLastPeriods(String nombreEmpresa, int nPeriodos);
@@ -47,6 +47,6 @@ public interface EmpresaRepository extends CrudRepository<Empresa, String> {
     @Query(nativeQuery = true,
             value = "SELECT COUNT (DISTINCT periodo) " +
                     "FROM t_cuenta " +
-                    "WHERE empresa_nombre_empresa = ?1")
+                    "WHERE empresa = ?1")
     Integer countPeriods(String nombreEmpresa);
 }
