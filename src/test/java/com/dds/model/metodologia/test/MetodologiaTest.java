@@ -1,8 +1,10 @@
 package com.dds.model.metodologia.test;
 
 import com.dds.model.metodologia.MetodologiaBuilder;
+import com.dds.model.metodologia.MetodologiaComparativa;
 import com.dds.model.metodologia.MetodologiaException;
 import com.dds.model.metodologia.MetodologiaTaxativa;
+import com.dds.model.metodologia.operadores.binarios.Mayor;
 import com.dds.model.metodologia.operadores.unarios.Creciente;
 import com.dds.model.metodologia.operadores.unarios.CrecienteEstricto;
 import com.dds.model.metodologia.operadores.unarios.Decreciente;
@@ -102,5 +104,35 @@ public class MetodologiaTest {
         service.save("CuentaX", empresa, 12, 92.601);
 
         Assert.assertFalse(metodologia.evaluar(empresa));
+    }
+
+    @Test
+    public void validarMetodologiaComparativa() throws MetodologiaException {
+        MetodologiaComparativa metodologia = new MetodologiaBuilder()
+                .setIDYPeriodo("CuentaX", 4)
+                .setOperador(new Mayor())
+                .setComparativo();
+
+        Empresa empresa1 = EmpresaService.getService().save("Empresa1", Date.valueOf("2017-01-01"));
+        CuentaService service = CuentaService.getService();
+
+        service.save("CuentaX", empresa1, 0, 50);
+        service.save("CuentaX", empresa1, 2, 60);
+        service.save("CuentaX", empresa1, 6, 92.5);
+        service.save("CuentaX", empresa1, 7, 92.6);
+
+        Empresa empresa2 = EmpresaService.getService().save("Empresa2", Date.valueOf("2017-01-01"));
+
+        service.save("CuentaX", empresa2, 0, 40);
+        service.save("CuentaX", empresa2, 2, 50);
+        service.save("CuentaX", empresa2, 6, 92.499);
+        service.save("CuentaX", empresa2, 7, 92.599);
+
+        Assert.assertTrue(metodologia.evaluar("Empresa1", "Empresa2"));
+
+        service.save("CuentaX", empresa1, 9, 92.7);
+        service.save("CuentaX", empresa2, 9, 92.7);
+
+        Assert.assertFalse(metodologia.evaluar("Empresa1", "Empresa2"));
     }
 }
