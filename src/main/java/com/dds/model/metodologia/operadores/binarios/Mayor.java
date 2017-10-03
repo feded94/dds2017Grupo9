@@ -5,4 +5,9 @@ public class Mayor extends Comparador {
     protected boolean compare(Double a, Double b) {
         return a > b;
     }
+
+    @Override
+    public String nombre() {
+        return ">";
+    }
 }

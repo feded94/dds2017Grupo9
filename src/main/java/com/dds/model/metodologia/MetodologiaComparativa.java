@@ -8,7 +8,7 @@ import com.dds.persistence.services.EmpresaService;
 
 import java.util.*;
 
-public class MetodologiaComparativa implements Metodologia {
+public class MetodologiaComparativa {
     private final ID cuentaIndicador;
     private final OperadorBinario operador;
     private final int periodos;

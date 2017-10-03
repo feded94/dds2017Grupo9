@@ -7,4 +7,9 @@ public class Igual extends Comparador {
     protected boolean compare(Double a, Double b) {
         return (b - DELTA < a) && (a < b + DELTA);
     }
+
+    @Override
+    public String nombre() {
+        return "=";
+    }
 }

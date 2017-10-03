@@ -11,7 +11,7 @@ import com.dds.persistence.services.EmpresaService;
 import java.util.LinkedList;
 import java.util.List;
 
-public class MetodologiaTaxativa implements Metodologia {
+public class MetodologiaTaxativa {
     private final ID cuentaIndicador;
     private final Operador operador;
     private final int periodos;

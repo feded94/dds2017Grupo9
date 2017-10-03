@@ -5,4 +5,9 @@ public class Decreciente extends OperadorCrecimiento {
     protected boolean compare(Double newer, Double older) {
         return newer <= older;
     }
+
+    @Override
+    public String nombre() {
+        return "ES DECRECIENTE";
+    }
 }
