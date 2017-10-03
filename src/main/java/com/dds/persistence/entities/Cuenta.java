@@ -21,6 +21,7 @@ public class Cuenta {
 
     @MapsId("nombreEmpresa")
     @ManyToOne
+    @JoinColumn(name = "empresa")
     public Empresa getEmpresa() {
         return empresa;
     }
