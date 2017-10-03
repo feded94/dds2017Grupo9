@@ -34,7 +34,7 @@ public class CuentaService {
     }
 
     public Cuenta findByPK(String nombreCuenta, String nombreEmpresa, Integer periodo) {
-        return repository.findById_NombreCuentaAndEmpresa_NombreEmpresaAndId_Periodo(
+        return repository.findById_NombreCuentaAndId_NombreEmpresaAndId_Periodo(
                 nombreCuenta, nombreEmpresa, periodo
         );
     }
