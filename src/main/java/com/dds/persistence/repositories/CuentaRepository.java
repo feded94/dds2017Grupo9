@@ -18,5 +18,7 @@ public interface CuentaRepository extends CrudRepository<Cuenta, CuentaPK> {
 
     List<Cuenta> findById_NombreEmpresa(String nombreEmpresa);
 
-    List<Cuenta> findById_NombreEmpresaOrId_Periodo(String nombreEmpresa, Integer periodo);
+    List<Cuenta> findById_NombreEmpresaAndId_Periodo(String nombreEmpresa, Integer periodo);
+
+    List<Cuenta> findById_Periodo(Integer periodo);
 }

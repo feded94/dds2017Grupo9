@@ -50,8 +50,12 @@ public class CuentaService {
         return repository.findById_NombreEmpresa(nombreEmpresa);
     }
 
-    public List<Cuenta> findByCompanyOrPeriod(String nombreEmpresa, Integer periodo) {
-        return repository.findById_NombreEmpresaOrId_Periodo(nombreEmpresa, periodo);
+    public List<Cuenta> findByCompanyAndPeriod(String nombreEmpresa, Integer periodo) {
+        return repository.findById_NombreEmpresaAndId_Periodo(nombreEmpresa, periodo);
+    }
+
+    public List<Cuenta> findByPeriod(Integer periodo) {
+        return repository.findById_Periodo(periodo);
     }
 
     @Transactional

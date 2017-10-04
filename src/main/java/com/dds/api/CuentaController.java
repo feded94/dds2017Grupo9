@@ -13,12 +13,28 @@ import java.util.List;
 @RestController
 @RequestMapping("api/cuentas")
 public class CuentaController {
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET, params = {"empresa", "periodo"})
     List<CuentaViewModel> getCuentas(
             @RequestParam(value = "empresa", required = false) String empresa,
             @RequestParam(value = "periodo", required = false) Integer periodo)
     {
-        List<Cuenta> cuentas = CuentaService.getService().findByCompanyOrPeriod(empresa, periodo);
+        List<Cuenta> cuentas = CuentaService.getService().findByCompanyAndPeriod(empresa, periodo);
+
+        return CuentaViewModel.MapAll(cuentas);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, params = "empresa")
+    List<CuentaViewModel> getCuentas(@RequestParam(value = "empresa", required = false) String empresa)
+    {
+        List<Cuenta> cuentas = CuentaService.getService().findByCompany(empresa);
+
+        return CuentaViewModel.MapAll(cuentas);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, params = "periodo")
+    List<CuentaViewModel> getCuentas(@RequestParam(value = "periodo", required = false) Integer periodo)
+    {
+        List<Cuenta> cuentas = CuentaService.getService().findByPeriod(periodo);
 
         return CuentaViewModel.MapAll(cuentas);
     }

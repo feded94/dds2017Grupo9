@@ -6,20 +6,19 @@ app.controller('homeController', ['$rootScope', '$scope', '$state', '$http', fun
         hc.indicadores = {};
 
         hc.loadCuentas = function () {
+            var params = new Object();
+
+            if (hc.empresa)
+                params.empresa = hc.empresa;
+            if (hc.periodo)
+                params.periodo = hc.periodo;
+
             $http.get('/api/cuentas', {
-                params: {
-                    empresa: hc.empresa,
-                    periodo: hc.periodo
-                }
+                params: params
             })
                 .then(function(res) {
-                    if (res.data.length > 0) {
-                        hc.cuentas = res.data;
-                        hc.showCuentasTbl = true;
-                    }
-                    else {
-                        hc.showCuentasTbl = false;
-                    }
+                    hc.showCuentasTbl = res.data.length > 0;
+                    hc.cuentas = res.data;
                 })
                 .catch(function(error){
                     console.log(error);
@@ -30,13 +29,19 @@ app.controller('homeController', ['$rootScope', '$scope', '$state', '$http', fun
             hc.loadIndicadores();
         };
         hc.loadIndicadores = function () {
-            $http.get('/api/indicadores')
-                .then(function (res) {
-                    hc.indicadores = res.data;
-                    hc.showIndicadoresTbl = true;
+            if (hc.empresa && hc.periodo)
+                $http.get('/api/indicadores', {
+                    params: {
+                        empresa: hc.empresa,
+                        periodo: hc.periodo
+                    }
                 })
-                .catch(function(error){
-                    console.log(error);
-                });
+                    .then(function (res) {
+                        hc.indicadores = res.data;
+                        hc.showIndicadoresTbl = true;
+                    })
+                    .catch(function(error){
+                        console.log(error);
+                    });
         };
 }]);
