@@ -32,16 +32,23 @@ public abstract class Indicador implements Dato {
         return new IndicadorCompuesto(this, op, indicador);
     }
 
-    public static Indicador parseFromString(String s) {
-        IndicadorLexer lexer = new IndicadorLexer(CharStreams.fromString(s));
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        IndicadorParser parser = new IndicadorParser(tokens);
-        IndicadorParser.IndicadorContext indicadorContext = parser.indicador();
+    public static Indicador parseFromString(String s) throws IndicadorException {
+        IndicadorListener listener;
 
-        ParseTreeWalker walker = new ParseTreeWalker();
-        IndicadorListener listener = new IndicadorListener();
+        try {
+            IndicadorLexer lexer = new IndicadorLexer(CharStreams.fromString(s));
+            CommonTokenStream tokens = new CommonTokenStream(lexer);
+            IndicadorParser parser = new IndicadorParser(tokens);
+            IndicadorParser.IndicadorContext indicadorContext = parser.indicador();
 
-        walker.walk(listener, indicadorContext);
+            ParseTreeWalker walker = new ParseTreeWalker();
+            listener = new IndicadorListener();
+
+            walker.walk(listener, indicadorContext);
+        }
+        catch (Exception e) {
+            throw new IndicadorException(e.getMessage());
+        }
 
         return listener.getIndicador();
     }

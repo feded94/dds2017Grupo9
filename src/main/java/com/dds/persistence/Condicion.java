@@ -1,5 +1,7 @@
 package com.dds.persistence;
 
+import com.dds.persistence.entities.Indicador;
+
 import java.util.ArrayList;
 import java.util.Collection;
 

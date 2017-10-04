@@ -43,7 +43,7 @@ app
 
         ic.ok = function (handler) {
             //Llamada al servicio backend de Indicadores (vista indicadores)
-            const data = {"_nombre": ic.inputNombre, "_expresion": ic.inputExpresion};
+            const data = {"nombre": ic.inputNombre, "regla": ic.inputExpresion};
             const config = {"Content-Type": "application/json"};
 
             $http.post('/api/indicadores', data, config)

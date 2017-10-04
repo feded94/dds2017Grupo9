@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service("IndicadorService")
 public class IndicadorService {
     @Autowired
@@ -21,6 +24,12 @@ public class IndicadorService {
         indicador.setRegla(regla);
 
         return repository.save(indicador);
+    }
+
+    public List<Indicador> getAll() {
+        List<Indicador> indicadores = new ArrayList<>();
+        repository.findAll().forEach(indicadores::add);
+        return indicadores;
     }
 
     public Indicador findByName(String name) {

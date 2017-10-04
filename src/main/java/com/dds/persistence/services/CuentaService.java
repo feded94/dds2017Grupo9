@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service("CuentaService")
@@ -31,6 +32,12 @@ public class CuentaService {
         cuenta.setValor(valor);
 
         return repository.save(cuenta);
+    }
+
+    public List<Cuenta> getAll() {
+        List<Cuenta> cuentas = new ArrayList<>();
+        repository.findAll().forEach(cuentas::add);
+        return cuentas;
     }
 
     public Cuenta findByPK(String nombreCuenta, String nombreEmpresa, Integer periodo) {
