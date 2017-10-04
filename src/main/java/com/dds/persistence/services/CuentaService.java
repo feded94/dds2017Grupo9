@@ -50,6 +50,10 @@ public class CuentaService {
         return repository.findById_NombreEmpresa(nombreEmpresa);
     }
 
+    public List<Cuenta> findByCompanyOrPeriod(String nombreEmpresa, Integer periodo) {
+        return repository.findById_NombreEmpresaOrId_Periodo(nombreEmpresa, periodo);
+    }
+
     @Transactional
     public void clearAll() {
         repository.deleteAll();

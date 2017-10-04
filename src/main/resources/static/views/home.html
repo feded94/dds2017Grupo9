@@ -6,13 +6,13 @@
             <div class="col-sm-6 col-md-3">
                 <div class="form-group">
                     <label for="comboEmpresa" class="control-label lblForm">Empresa:</label>
-                    <input type="text" class="form-control" id="comboEmpresa">
+                    <input type="text" class="form-control" id="comboEmpresa" ng-model="hc.empresa">
                 </div>
             </div>
             <div class="col-sm-6 col-md-3">
                 <div class="form-group">
                     <label for="comboPeriodo" class="control-label lblForm">Periodo:</label>
-                    <input type="text" class="form-control" id="comboPeriodo">
+                    <input type="text" class="form-control" id="comboPeriodo" ng-model="hc.periodo">
                 </div>
             </div>
             <div class="col-sm-6 col-md-6">
@@ -32,7 +32,6 @@
                     <th>Empresa</th>
                     <th>Nombre</th>
                     <th>Periodo</th>
-                    <th>Tipo</th>
                     <th>Valor</th>
                 </tr>
                 </thead>
@@ -41,7 +40,6 @@
                     <td>{{x.empresa}}</td>
                     <td>{{x.nombre}}</td>
                     <td>{{x.periodo}}</td>
-                    <td>{{x.tipo}}</td>
                     <td>{{x.valor}}</td>
                 </tr>
                 </tbody>
@@ -55,13 +53,13 @@
                 <thead>
                 <tr>
                     <th>Indicador</th>
-                    <th>Valor</th>
+                    <!--<th>Valor</th>-->
                 </tr>
                 </thead>
                 <tbody>
                 <tr ng-repeat="x in hc.indicadores">
-                    <td>{{x._nombre}}</td>
-                    <td>{{x._valor}}</td>
+                    <td>{{x.nombre}}</td>
+                    <!--<td>{{x.valor}}</td>-->
                 </tr>
                 </tbody>
             </table>

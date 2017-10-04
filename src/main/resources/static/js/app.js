@@ -17,6 +17,13 @@ app.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', functio
                 templateUrl: 'views/indicadores.html',
                 controller: 'indicadoresController',
                 controllerAs: 'ic'
+            })
+
+            .state('empresas', {
+                url: '/empresas',
+                templateUrl: 'views/empresas.html',
+                controller: 'empresasController',
+                controllerAs: 'ec'
             });
 
         $urlRouterProvider.otherwise('/home');

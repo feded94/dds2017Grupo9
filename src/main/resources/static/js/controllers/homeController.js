@@ -6,10 +6,20 @@ app.controller('homeController', ['$rootScope', '$scope', '$state', '$http', fun
         hc.indicadores = {};
 
         hc.loadCuentas = function () {
-            $http.get('/api/cuentas')
-                .then(function (res) {
-                hc.cuentas = res.data;
-                hc.showCuentasTbl = true;
+            $http.get('/api/cuentas', {
+                params: {
+                    empresa: hc.empresa,
+                    periodo: hc.periodo
+                }
+            })
+                .then(function(res) {
+                    if (res.data.length > 0) {
+                        hc.cuentas = res.data;
+                        hc.showCuentasTbl = true;
+                    }
+                    else {
+                        hc.showCuentasTbl = false;
+                    }
                 })
                 .catch(function(error){
                     console.log(error);

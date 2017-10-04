@@ -14,9 +14,11 @@ import java.util.List;
 @RequestMapping("api/cuentas")
 public class CuentaController {
     @RequestMapping(method = RequestMethod.GET)
-    List<CuentaViewModel> getCuentas(@RequestParam(value = "empresa") String empresa)
+    List<CuentaViewModel> getCuentas(
+            @RequestParam(value = "empresa", required = false) String empresa,
+            @RequestParam(value = "periodo", required = false) Integer periodo)
     {
-        List<Cuenta> cuentas = CuentaService.getService().findByCompany(empresa);
+        List<Cuenta> cuentas = CuentaService.getService().findByCompanyOrPeriod(empresa, periodo);
 
         return CuentaViewModel.MapAll(cuentas);
     }

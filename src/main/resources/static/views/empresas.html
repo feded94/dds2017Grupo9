@@ -1,0 +1,22 @@
+<h1 class="page-header">Empresas</h1>
+
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <div class="table-responsive" id="tblEmpresas" ng-if="ec.showEmpresasTbl">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Nombre de empresa</th>
+                    <th>Fecha de alta</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="x in ec.empresas">
+                    <td>{{x.nombreEmpresa}}</td>
+                    <td>{{x.fechaAlta}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
