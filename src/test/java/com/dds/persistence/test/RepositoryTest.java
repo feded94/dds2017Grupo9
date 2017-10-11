@@ -1,5 +1,6 @@
 package com.dds.persistence.test;
 
+import com.dds.model.metodologia.MetodologiaBuilder;
 import com.dds.persistence.entities.Cuenta;
 import com.dds.persistence.entities.Empresa;
 import com.dds.persistence.services.*;
@@ -21,6 +22,7 @@ public class RepositoryTest {
     private CuentaService cuentaService;
     private EmpresaService empresaService;
     private UsuarioService usuarioService;
+    private MetodologiaService metodologiaService;
 
     @Before
     public void initialize() {
@@ -28,6 +30,7 @@ public class RepositoryTest {
         cuentaService = CuentaService.getService();
         empresaService = EmpresaService.getService();
         usuarioService = UsuarioService.getService();
+        metologiaService
 
         indicadorService.clearAll();
         cuentaService.clearAll();

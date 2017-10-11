@@ -1,6 +1,6 @@
 app.controller('loginController',
-    ['$uibModal', '$rootScope', '$http', '$cookies', '$location',
-        function ($uibModal, $rootScope, $http, $cookies, $location) {
+    ['$rootScope', '$http', '$cookies', '$location',
+        function ($rootScope, $http, $cookies, $location) {
             var lc = this;
 
             lc.login = function () {

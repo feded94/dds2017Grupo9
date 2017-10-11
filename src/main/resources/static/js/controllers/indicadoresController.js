@@ -1,5 +1,4 @@
-app
-    .controller('indicadoresController', ['$uibModal', '$scope', '$http', function ($uibModal, $scope, $http) {
+app.controller('indicadoresController', ['$uibModal', '$scope', '$http', function ($uibModal, $scope, $http) {
         var ic = this;
 
         ic.showIndicadoresTbl = false;

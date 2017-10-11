@@ -36,6 +36,8 @@ app.config(
                 });
 
             $urlRouterProvider.otherwise('/login');
+
+            //$rootScope.globals = $cookieStore.get('globals') || {};
         }
     ]
 );

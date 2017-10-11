@@ -60,13 +60,13 @@ public class IDTest {
     public void obtenerValorIDTest2() throws IndicadorException {
         Empresa empresa = empresaService.save("Empresa1", Date.valueOf("2017-01-01"));
 
-        /*
-        indicadorService.save("Sumar3Indicadores", "Indicador1 + Indicador2 + Indicador3");
+        Usuario usuario = UsuarioService.getService().save("USUARIO1", "123");
 
-        indicadorService.save("Indicador1", "10");
-        indicadorService.save("Indicador2", "20");
-        indicadorService.save("Indicador3", "30");
-        */
+        indicadorService.save("USUARIO1", "Sumar3Indicadores", "Indicador1 + Indicador2 + Indicador3");
+
+        indicadorService.save("USUARIO1", "Indicador1", "10");
+        indicadorService.save("USUARIO1", "Indicador2", "20");
+        indicadorService.save("USUARIO1", "Indicador3", "30");
 
         Assert.assertEquals(
                 10 + 20 + 30,
