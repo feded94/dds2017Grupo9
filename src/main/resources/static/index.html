@@ -32,7 +32,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a class="textoFijoNav">¡Bienvenido, Admin!</a></li>
+                    <li><a class="textoFijoNav">{{$rootScope.globals.currentUser.username}}</a></li>
                     <li><a href="#">Logout</a></li>
                 </ul>
             </div>
@@ -64,6 +64,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="js/lib/angular-cookies.min.js"></script>
     <script src="js/lib/angular-touch.min.js"></script>
     <script src="js/lib/angular-animate.min.js"></script>
     <script src="js/lib/angular-sanitize.min.js"></script>
@@ -73,6 +74,7 @@
     <script src="js/controllers/homeController.js"></script>
     <script src="js/controllers/indicadoresController.js"></script>
     <script src="js/controllers/empresasController.js"></script>
+    <script src="js/controllers/loginController.js"></script>
     <script src="js/components/modalFormComponent.js"></script>
 
 </body>

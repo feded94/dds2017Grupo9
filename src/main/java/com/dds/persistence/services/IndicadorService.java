@@ -17,9 +17,10 @@ public class IndicadorService {
     private static IndicadorService service;
 
     @Transactional
-    public Indicador save(String name, String regla) {
+    public Indicador save(String usuario, String name, String regla) {
         Indicador indicador = new Indicador();
 
+        indicador.setUsuario(UsuarioService.getService().findByNombreUsuario(usuario));
         indicador.setNombre(name);
         indicador.setRegla(regla);
 

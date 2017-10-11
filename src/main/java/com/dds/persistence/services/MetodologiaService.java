@@ -16,9 +16,10 @@ public class MetodologiaService {
     private static MetodologiaService service;
 
     @Transactional
-    public Metodologia save(String nombre, MetodologiaTaxativa objMetodologia) {
+    public Metodologia save(String usuario, String nombre, MetodologiaTaxativa objMetodologia) {
         Metodologia metodologia = new Metodologia();
 
+        metodologia.setUsuario(UsuarioService.getService().findByNombreUsuario(usuario));
         metodologia.setNombre(nombre);
         metodologia.setCuentaIndicador(objMetodologia.getCuentaIndicador().toString());
         metodologia.setOperador(
@@ -33,9 +34,10 @@ public class MetodologiaService {
     }
 
     @Transactional
-    public Metodologia save(String nombre, MetodologiaComparativa objMetodologia) {
+    public Metodologia save(String usuario, String nombre, MetodologiaComparativa objMetodologia) {
         Metodologia metodologia = new Metodologia();
 
+        metodologia.setUsuario(UsuarioService.getService().findByNombreUsuario(usuario));
         metodologia.setNombre(nombre);
         metodologia.setCuentaIndicador(objMetodologia.getCuentaIndicador().toString());
         metodologia.setOperador(
@@ -47,6 +49,10 @@ public class MetodologiaService {
         metodologia.setOperando(null);
 
         return repository.save(metodologia);
+    }
+
+    public Metodologia findByNombre(String nombre) {
+        return repository.findByNombre(nombre);
     }
 
     @Transactional

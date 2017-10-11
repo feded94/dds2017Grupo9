@@ -20,21 +20,25 @@ public class RepositoryTest {
     private IndicadorService indicadorService;
     private CuentaService cuentaService;
     private EmpresaService empresaService;
+    private UsuarioService usuarioService;
 
     @Before
     public void initialize() {
         indicadorService = IndicadorService.getService();
         cuentaService = CuentaService.getService();
         empresaService = EmpresaService.getService();
+        usuarioService = UsuarioService.getService();
 
         indicadorService.clearAll();
         cuentaService.clearAll();
         empresaService.clearAll();
+        usuarioService.clearAll();
     }
 
     @Test
     public void indicadorTest() {
-        indicadorService.save("INDICADOR1", "1+1");
+        usuarioService.save("USUARIO1", "123");
+        indicadorService.save("USUARIO1", "INDICADOR1", "1+1");
         Assert.assertEquals("1+1", indicadorService.findByName("INDICADOR1").getRegla());
     }
 

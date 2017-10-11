@@ -11,6 +11,8 @@ public class Metodologia {
     private Operador operador;
     private int periodos;
     private Double operando;
+    private Usuario usuario;
+    private String nombreUsuario;
 
     @Id
     @Column(name = "nombre")
@@ -60,5 +62,16 @@ public class Metodologia {
 
     public void setOperando(Double operando) {
         this.operando = operando;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "usuario")
+    @NotNull
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

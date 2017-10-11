@@ -2,6 +2,7 @@ package com.dds.model.indicador.test;
 
 import com.dds.model.indicador.*;
 import com.dds.persistence.entities.Empresa;
+import com.dds.persistence.entities.Usuario;
 import com.dds.persistence.services.*;
 import org.junit.Assert;
 import org.junit.Before;
@@ -42,8 +43,10 @@ public class IDTest {
         cuentaService.save("Cuenta2", empresa, 0, Cuenta2);
         cuentaService.save("Cuenta3", empresa, 0, Cuenta3);
 
-        indicadorService.save("Sumar3Cuentas", "Cuenta1 + Cuenta2 + Cuenta3");
-        indicadorService.save("CalculosRaros", "Cuenta1 * Cuenta2 / (Cuenta3 - Cuenta1) + 50");
+        Usuario usuario = UsuarioService.getService().save("Usuario", "123");
+
+        indicadorService.save("Usuario", "Sumar3Cuentas", "Cuenta1 + Cuenta2 + Cuenta3");
+        indicadorService.save("Usuario", "CalculosRaros", "Cuenta1 * Cuenta2 / (Cuenta3 - Cuenta1) + 50");
 
         Assert.assertEquals(
                 Cuenta1 + Cuenta2 + Cuenta3,
@@ -57,11 +60,13 @@ public class IDTest {
     public void obtenerValorIDTest2() throws IndicadorException {
         Empresa empresa = empresaService.save("Empresa1", Date.valueOf("2017-01-01"));
 
+        /*
         indicadorService.save("Sumar3Indicadores", "Indicador1 + Indicador2 + Indicador3");
 
         indicadorService.save("Indicador1", "10");
         indicadorService.save("Indicador2", "20");
         indicadorService.save("Indicador3", "30");
+        */
 
         Assert.assertEquals(
                 10 + 20 + 30,
