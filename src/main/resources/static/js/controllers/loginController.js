@@ -5,9 +5,8 @@ app.controller('loginController',
 
             lc.login = function () {
                 lc.dataLoading = true;
-                var user = lc.getUser();
-
-                if (user !== null && user.clave === lc.password) {
+                lc.getUser().then((user) => {
+                    if (user !== null && user.clave === lc.password) {
                     $rootScope.globals = {
                         currentUser: {
                             username: lc.username,
@@ -24,12 +23,15 @@ app.controller('loginController',
                 else {
                     lc.dataLoading = false;
                 }
+            })
             };
 
             lc.getUser = function () {
                 return $http.get('/api/usuarios', {
                     params: { username: lc.username }
-                });
+                }).then((res) => {
+                    return res.data;
+            });
             };
         }
     ]

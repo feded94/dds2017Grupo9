@@ -30,7 +30,6 @@ public class RepositoryTest {
         cuentaService = CuentaService.getService();
         empresaService = EmpresaService.getService();
         usuarioService = UsuarioService.getService();
-        metologiaService
 
         indicadorService.clearAll();
         cuentaService.clearAll();
