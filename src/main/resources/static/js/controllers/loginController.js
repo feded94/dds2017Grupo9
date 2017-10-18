@@ -15,7 +15,7 @@ app.controller('loginController',
                     };
 
                     var cookieExp = new Date();
-                    cookieExp.setDate(cookieExp.getDate() + 7);
+                    cookieExp.setDate(cookieExp.getTime() + (60 * 1000));
                     $cookies.putObject('globals', $rootScope.globals, { expires: cookieExp });
 
                     $location.path('/home');

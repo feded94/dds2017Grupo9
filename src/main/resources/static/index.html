@@ -32,7 +32,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a class="textoFijoNav">{{$rootScope.globals.currentUser.username}}</a></li>
+                    <li><a class="textoFijoNav">{{globals.currentUser.username}}</a></li>
                     <li><a href="#">Logout</a></li>
                 </ul>
             </div>
@@ -41,7 +41,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-3 col-md-2 sidebar">
+            <div class="col-sm-3 col-md-2 sidebar" ng-show="globals && globals.currentUser && globals.currentUser.username">
                 <ul class="nav nav-sidebar">
                     <li ui-sref-active="active"><a ui-sref="home">Home <span class="sr-only">(current)</span></a></li>
                     <li ui-sref-active="active"><a ui-sref="indicadores">Indicadores</a></li>
