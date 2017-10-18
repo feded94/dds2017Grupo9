@@ -1,4 +1,4 @@
-app.controller('indicadoresController', ['$uibModal', '$scope', '$http', function ($uibModal, $scope, $http) {
+app.controller('indicadoresController', ['$uibModal', '$scope', '$http', '$rootScope', function ($uibModal, $scope, $http, $rootScope) {
         var ic = this;
 
         ic.showIndicadoresTbl = false;
@@ -42,7 +42,7 @@ app.controller('indicadoresController', ['$uibModal', '$scope', '$http', functio
 
         ic.ok = function (handler) {
             //Llamada al servicio backend de Indicadores (vista indicadores)
-            const data = {"nombre": ic.inputNombre, "regla": ic.inputExpresion};
+            const data = {"nombre": ic.inputNombre, "regla": ic.inputExpresion, "username": $rootScope.globals.currentUser.username};
             const config = {"Content-Type": "application/json"};
 
             $http.post('/api/indicadores', data, config)

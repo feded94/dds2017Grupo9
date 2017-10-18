@@ -1,6 +1,7 @@
 var app = angular.module('app', ['ngCookies', 'ui.router', 'ui.bootstrap']);
 
-app.config(
+app
+    .config(
     ['$stateProvider', '$locationProvider', '$urlRouterProvider',
         function ($stateProvider, $locationProvider, $urlRouterProvider) {
 
@@ -36,8 +37,19 @@ app.config(
                 });
 
             $urlRouterProvider.otherwise('/login');
-
-            //$rootScope.globals = $cookieStore.get('globals') || {};
         }
     ]
-);
+)
+.run(['$rootScope', '$location', '$cookieStore', '$http', function run($rootScope, $location, $cookieStore, $http) {
+    // keep user logged in after page refresh
+    $rootScope.globals = $cookieStore.get('globals') || {};
+
+    $rootScope.$on('$locationChangeStart', function (event, next, current) {
+        // redirect to login page if not logged in and trying to access a restricted page
+        var restrictedPage = $.inArray($location.path(), ['/login']) === -1;
+        var loggedIn = $rootScope.globals.currentUser;
+        if (restrictedPage && !loggedIn) {
+            $location.path('/login');
+        }
+    });
+}]);

@@ -24,7 +24,7 @@ public class IndicadorController {
             throw new IndicadorException();
         }
 
-        IndicadorService.getService().save(indicador.getUsuario().getNombreUsuario(), indicador.getNombre(), indicador.getRegla());
+        IndicadorService.getService().save(indicador.getUsername(), indicador.getNombre(), indicador.getRegla());
     }
 
     @RequestMapping(method = RequestMethod.GET)

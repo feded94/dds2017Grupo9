@@ -8,6 +8,7 @@ import javax.validation.constraints.NotNull;
 public class Indicador {
     private String nombre;
     private String regla;
+    private String username;
     private Usuario usuario;
 
     @Id
@@ -27,6 +28,15 @@ public class Indicador {
 
     public void setRegla(String regla) {
         this.regla = regla;
+    }
+
+    @Transient
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @ManyToOne
