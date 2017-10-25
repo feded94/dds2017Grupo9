@@ -1,5 +1,7 @@
 package com.dds.persistence.entities;
 
+import com.dds.persistence.services.UsuarioService;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -72,5 +74,15 @@ public class Metodologia {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    @Transient
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.usuario = UsuarioService.getService().findByNombreUsuario(nombreUsuario);
+        this.nombreUsuario = nombreUsuario;
     }
 }

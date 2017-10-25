@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service("MetodologiaService")
 public class MetodologiaService {
     @Autowired
@@ -42,6 +45,17 @@ public class MetodologiaService {
         metodologia.setOperando(null);
 
         return repository.save(metodologia);
+    }
+
+    @Transactional
+    public Metodologia save(Metodologia metodologia) {
+        return repository.save(metodologia);
+    }
+
+    public List<Metodologia> getAll() {
+        List<Metodologia> metodologias = new ArrayList<>();
+        repository.findAll().forEach(metodologias::add);
+        return metodologias;
     }
 
     public Metodologia findByNombre(String nombre) {
