@@ -1,6 +1,5 @@
 package com.dds.api;
 
-import com.dds.model.CuentaViewModel;
 import com.dds.persistence.entities.Cuenta;
 import com.dds.persistence.services.CuentaService;
 import org.springframework.web.bind.annotation.RequestMapping;
