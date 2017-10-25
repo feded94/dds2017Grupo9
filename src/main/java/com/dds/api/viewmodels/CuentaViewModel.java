@@ -1,4 +1,4 @@
-package com.dds.api;
+package com.dds.api.viewmodels;
 
 import com.dds.persistence.entities.Cuenta;
 

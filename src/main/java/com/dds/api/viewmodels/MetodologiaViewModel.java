@@ -1,7 +1,9 @@
-package com.dds.api;
+package com.dds.api.viewmodels;
 
+import com.dds.model.metodologia.operadores.Operador;
+import com.dds.model.metodologia.operadores.OperadorBinario;
+import com.dds.model.metodologia.operadores.OperadorFactory;
 import com.dds.persistence.entities.Metodologia;
-import com.dds.persistence.entities.Operador;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,12 +20,14 @@ public class MetodologiaViewModel {
                 .append(metodologia.getCuentaIndicador())
                 .append(" ");
 
-        if (metodologia.getOperador().getTipo() == Operador.Tipo.BINARIO)
+        Operador operador = OperadorFactory.getOperador(metodologia.getOperador());
+
+        if (operador instanceof OperadorBinario)
             sb.append("(Empresa 1) ");
 
-        sb.append(metodologia.getOperador().getNombre());
+        sb.append(metodologia.getOperador());
 
-        if (metodologia.getOperador().getTipo() == Operador.Tipo.BINARIO) {
+        if (operador instanceof OperadorBinario) {
             sb.append(" ");
 
             // Comparativa

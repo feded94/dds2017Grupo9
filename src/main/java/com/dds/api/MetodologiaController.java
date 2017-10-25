@@ -1,5 +1,6 @@
 package com.dds.api;
 
+import com.dds.api.viewmodels.MetodologiaViewModel;
 import com.dds.persistence.services.MetodologiaService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 public class Metodologia {
     private String nombre;
     private String cuentaIndicador;
-    private Operador operador;
+    private String operador;
     private int periodos;
     private Double operando;
     private Usuario usuario;
@@ -34,14 +34,13 @@ public class Metodologia {
         this.cuentaIndicador = cuentaIndicador;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "operador")
+    @Column(name = "operador")
     @NotNull
-    public Operador getOperador() {
+    public String getOperador() {
         return operador;
     }
 
-    public void setOperador(Operador operador) {
+    public void setOperador(String operador) {
         this.operador = operador;
     }
 

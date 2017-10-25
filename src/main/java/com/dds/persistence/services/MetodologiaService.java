@@ -2,6 +2,7 @@ package com.dds.persistence.services;
 
 import com.dds.model.metodologia.MetodologiaComparativa;
 import com.dds.model.metodologia.MetodologiaTaxativa;
+import com.dds.model.metodologia.operadores.OperadorFactory;
 import com.dds.persistence.entities.Metodologia;
 import com.dds.persistence.repositories.MetodologiaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,7 @@ public class MetodologiaService {
         metodologia.setUsuario(UsuarioService.getService().findByNombreUsuario(usuario));
         metodologia.setNombre(nombre);
         metodologia.setCuentaIndicador(objMetodologia.getCuentaIndicador().toString());
-        metodologia.setOperador(
-                OperadorService.getService().findByNombre(
-                        objMetodologia.getOperador().nombre()
-                )
-        );
+        metodologia.setOperador(objMetodologia.getOperador().nombre());
         metodologia.setPeriodos(objMetodologia.getPeriodos());
         metodologia.setOperando(objMetodologia.getOperando());
 
@@ -40,11 +37,7 @@ public class MetodologiaService {
         metodologia.setUsuario(UsuarioService.getService().findByNombreUsuario(usuario));
         metodologia.setNombre(nombre);
         metodologia.setCuentaIndicador(objMetodologia.getCuentaIndicador().toString());
-        metodologia.setOperador(
-                OperadorService.getService().findByNombre(
-                        objMetodologia.getOperador().nombre()
-                )
-        );
+        metodologia.setOperador(objMetodologia.getOperador().nombre());
         metodologia.setPeriodos(objMetodologia.getPeriodos());
         metodologia.setOperando(null);
 

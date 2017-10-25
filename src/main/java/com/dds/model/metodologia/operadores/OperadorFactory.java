@@ -40,6 +40,6 @@ public final class OperadorFactory {
                 return op;
         }
 
-        return null;
+        throw new RuntimeException("El operador no existe.");
     }
 }
