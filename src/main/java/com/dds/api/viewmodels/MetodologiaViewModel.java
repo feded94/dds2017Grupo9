@@ -22,7 +22,7 @@ public class MetodologiaViewModel {
 
         Operador operador = OperadorFactory.getOperador(metodologia.getOperador());
 
-        if (operador instanceof OperadorBinario)
+        if (operador instanceof OperadorBinario && metodologia.getOperando() == null)
             sb.append("(Empresa 1) ");
 
         sb.append(metodologia.getOperador());
@@ -55,6 +55,18 @@ public class MetodologiaViewModel {
         }
 
         return metodologiaViewModels;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getCondicion() {
+        return condicion;
+    }
+
+    public String getUsername() {
+        return username;
     }
 }
 

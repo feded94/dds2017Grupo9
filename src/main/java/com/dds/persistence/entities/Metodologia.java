@@ -46,7 +46,7 @@ public class Metodologia {
         this.operador = operador;
     }
 
-    @Column(name = "periodo")
+    @Column(name = "periodos")
     @NotNull
     public int getPeriodos() {
         return periodos;
