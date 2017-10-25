@@ -1,6 +1,5 @@
 package com.dds.api;
 
-import com.dds.persistence.IndicadorException;
 import com.dds.persistence.entities.Indicador;
 import com.dds.persistence.services.IndicadorService;
 import org.springframework.web.bind.annotation.*;

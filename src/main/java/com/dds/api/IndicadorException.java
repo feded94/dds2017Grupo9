@@ -1,4 +1,4 @@
-package com.dds.persistence;
+package com.dds.api;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
