@@ -1,0 +1,29 @@
+<h1 class="page-header">Metodologías</h1>
+
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <button type="button" class="btn btn-default pull-left" ng-click="mc.openModalAddMetodologia();">Agregar Metodología</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <h3 class="sub-header">Metodologias</h3>
+        <div class="table-responsive" id="tblMetodologias" ng-if="mc.showMetodologiasTbl">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Metodologias</th>
+                    <th>Condición</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="x in mc.metodologias">
+                    <td>{{x.nombre}}</td>
+                    <td>{{x.condicion}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -29,6 +29,13 @@ app
                     controllerAs: 'ec'
                 })
 
+                .state('metodologias', {
+                    url: '/metodologias',
+                    templateUrl: 'views/metodologias.html',
+                    controller: 'metodologiasController',
+                    controllerAs: 'mc'
+                })
+
                 .state('login', {
                     url: '/login',
                     templateUrl: 'views/login.html',

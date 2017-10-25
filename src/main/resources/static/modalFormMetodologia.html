@@ -1,0 +1,73 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Crear metodología</h3>
+</div>
+
+<div class="modal-body" id="modal-body">
+
+        <div class="form-group">
+            <label for="metodologia" class="control-label">Nombre de metodología:</label>
+
+            <input class="form-control" id="metodologia" name="metodologia" style="width: 50%"  placeholder="metodologia" required="" type="text">
+            <p ng-show="form.metodologia.$dirty && form.metodologia.$error.required" class="help-block">Debe ingresar un nombre de metodología.</p>
+
+        </div>
+
+        <div class="form-group">
+            <label for="cuentaindicador" class="control-label">Nombre de cuenta / indicador:</label>
+
+            <input class="form-control" id="cuentaindicador" name="cuentaindicador" style="width: 50%"  placeholder="cuenta / indicador" required="" type="text">
+            <p class="help-block">Debe ingresar el nombre de la cuenta o indicador evaluado.</p>
+
+        </div>
+
+        <div class="form-group">
+            <label for="periodos" class="control-label">Cantidad de periodos:</label>
+
+            <input type="number" id="periodos" name="periodos" style="width: 10%" min="1" class="form-control" value="1" required="">
+            <p class="help-block">Cantidad de periodos más recientes sobre los cuales se evalúa la misma condición.</p>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Tipo de metodología:</label>
+
+            <div class="radio">
+                <label><input type="radio" name="tipo">Taxativa: Evaluar condición sobre una empresa</label>
+            </div>
+
+            <div class="radio">
+                <label><input type="radio" name="tipo">Comparativa: Comparar una empresa con otra</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="operadores">Operador:</label>
+
+            <div>
+                <select class="selectpicker" id="operadores" data-show-subtext="true" data-live-search="true">
+
+                    <optgroup label="Operador unario">
+                        <option>Operador1</option>
+                    </optgroup>
+
+                    <optgroup label="Operador binario">
+                        <option>Operador2</option>
+                        <option>Operador3</option>
+                    </optgroup>
+
+                </select>
+
+                <script type="text/javascript">
+                    $( function() {
+                        $('.selectpicker').selectpicker();
+                    })
+                </script>
+            </div>
+
+        </div>
+
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="mc.ok(this);">Crear</button>
+    <button class="btn btn-warning" type="button" ng-click="mc.cancel(this);">Cancelar</button>
+</div>
