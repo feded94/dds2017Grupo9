@@ -1,8 +1,8 @@
 <div class="modal-header">
-    <h3 class="modal-title" id="modal-title">Crear metodología</h3>
+    <h3 class="modal-title" id="modal-title-metodologias-metodologias">Crear metodología</h3>
 </div>
 
-<div class="modal-body" id="modal-body">
+<div class="modal-body" id="modal-body-metodologias">
 
         <div class="form-group">
             <label for="metodologia" class="control-label">Nombre de metodología:</label>
@@ -42,8 +42,8 @@
         <div class="form-group">
             <label class="control-label" for="operadores">Operador:</label>
 
-            <div ng-init="mc.getOperadores()">
-                <select class="selectpicker" ng-model="mc.selectOperador" id="operadores" data-show-subtext="true" data-live-search="true">
+            <div>
+                <select class="form-control" ng-model="mc.selectOperador" id="operadores">
 
                     <!--
                     <optgroup label="Operador unario">
@@ -59,14 +59,7 @@
                     <option ng-repeat="x in mc.operadores" value="{{x.nombre}}">{{x.nombre}}</option>
 
                 </select>
-
-                <script type="text/javascript">
-                    $( function() {
-                        $('.selectpicker').selectpicker();
-                    })
-                </script>
             </div>
-
         </div>
 
 </div>

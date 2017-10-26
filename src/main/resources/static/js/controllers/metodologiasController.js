@@ -3,7 +3,8 @@ app.controller('metodologiasController', ['$uibModal', '$scope', '$http', '$root
 
     mc.showMetodologiasTbl = false;
     mc.metodologias = {};
-    mc.operadores = {};
+    mc.operadores = [];
+    mc.selectOperador = "";
 
     mc.getMetodologias = function () {
         $http.get('/api/metodologias')
@@ -34,8 +35,8 @@ app.controller('metodologiasController', ['$uibModal', '$scope', '$http', '$root
         var modalInstance = $uibModal.open({
             animation: true,
             templateUrl: 'modalFormMetodologia.html',
-            ariaLabelledBy: 'modal-title',
-            ariaDescribedBy: 'modal-body',
+            ariaLabelledBy: 'modal-title-metodologias',
+            ariaDescribedBy: 'modal-body-metodologias',
             controller: 'metodologiasController',
             controllerAs: 'mc'
         });
@@ -53,4 +54,5 @@ app.controller('metodologiasController', ['$uibModal', '$scope', '$http', '$root
     };
 
     mc.getMetodologias();
+    mc.getOperadores();
 }]);

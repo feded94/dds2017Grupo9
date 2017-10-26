@@ -10,7 +10,6 @@
         var modalForm = this;
 
         modalForm.$onInit = function () {
-
         };
 
         modalForm.ok = function () {
