@@ -33,7 +33,8 @@ app.controller('homeController', ['$rootScope', '$scope', '$state', '$http', fun
                 $http.get('/api/indicadores', {
                     params: {
                         empresa: hc.empresa,
-                        periodo: hc.periodo
+                        periodo: hc.periodo,
+                        usuario: $rootScope.globals.currentUser.username
                     }
                 })
                     .then(function (res) {

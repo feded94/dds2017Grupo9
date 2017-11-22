@@ -32,6 +32,9 @@ public class CuentaService {
         cuenta.setId(cuentaPK);
         cuenta.setValor(valor);
 
+        // Al actualizar la cuenta, se borran los valores cacheados de los indicadores asociados.
+        CacheIndicadorService.getService().deleteValorCacheado(empresa.getNombreEmpresa(), periodo);
+
         return repository.save(cuenta);
     }
 

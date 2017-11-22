@@ -1,6 +1,7 @@
 package com.dds.api;
 
 import com.dds.persistence.entities.Indicador;
+import com.dds.persistence.services.CacheIndicadorService;
 import com.dds.persistence.services.IndicadorService;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,7 +35,8 @@ public class IndicadorController {
     @RequestMapping(method = RequestMethod.GET, params = {"empresa", "periodo"})
     List<IndicadorEvaluado> getIndicadores(
             @RequestParam(value = "empresa") String empresa,
-            @RequestParam(value = "periodo") Integer periodo)
+            @RequestParam(value = "periodo") Integer periodo,
+            @RequestParam(value = "usuario") String usuario)
     {
         List<Indicador> indicadores = this.getIndicadores();
         List<IndicadorEvaluado> indicadoresEvaluados = new ArrayList<>();
@@ -51,6 +53,12 @@ public class IndicadorController {
                         ).getResultado(empresa, periodo)
                 );
                 indicadoresEvaluados.add(indicadorEvaluado);
+
+                CacheIndicadorService.getService().save(indicador.getNombre(),
+                        usuario,
+                        empresa,
+                        periodo,
+                        indicadorEvaluado.getValor());
             }
             catch (Exception e) { }
         }

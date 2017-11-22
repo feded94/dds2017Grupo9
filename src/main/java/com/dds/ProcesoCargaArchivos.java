@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.io.*;
 import java.nio.file.*;
 
@@ -26,7 +27,11 @@ public class ProcesoCargaArchivos implements DisposableBean, Runnable {
         this.dir = FileSystems.getDefault().getPath(dirname);
 
         this.thread = new Thread(this);
-        this.thread.run();
+    }
+
+    @PostConstruct
+    public void init() {
+        thread.start();
     }
 
     @Override

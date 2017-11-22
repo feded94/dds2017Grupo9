@@ -50,14 +50,30 @@ public class ArchivoCuentasParser {
                 List<String> strs = Arrays.asList(line.split(","));
 
                 if (strs.size() != 4) {
-                    System.err.println("Error de al intentar parsear: \"" + line + "\"");
+                    System.err.println("Error de al intentar procesar: \"" + line + "\"");
                     return false;
                 }
 
                 String cuenta = strs.get(0).trim();
                 String empresa = strs.get(1).trim();
-                Integer periodo = Integer.parseInt(strs.get(2).trim());
-                double valor = Double.parseDouble(strs.get(3).trim());
+                Integer periodo;
+                double valor;
+
+                try {
+                    periodo = Integer.parseInt(strs.get(2).trim());
+                } catch (NumberFormatException e) {
+                    System.err.println("Error de al intentar procesar: \"" + line + "\"");
+                    System.err.println("\tPeriodo debe ser un numero!");
+                    return false;
+                }
+
+                try {
+                    valor = Double.parseDouble(strs.get(3).trim());
+                } catch (NumberFormatException e) {
+                    System.err.println("Error de al intentar procesar: \"" + line + "\"");
+                    System.err.println("\tValor de la cuenta debe ser un numero!");
+                    return false;
+                }
 
                 return CuentaService.getService()
                         .save(cuenta, empresa, periodo, valor) != null;

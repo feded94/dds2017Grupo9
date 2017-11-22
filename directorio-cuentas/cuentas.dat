@@ -1,7 +1,8 @@
-cuenta1, empresa1, 1, 50
+cuenta1, empresa1, 1, 5
 cuenta1, empresa1, 2, 90
+cuenta2, empresa1, 1, 5
 cuenta2, empresa1, 5, 5
 
-cuenta1, empresa2, 1, 50
+cuenta1, empresa2, 1, 5
 cuenta1, empresa2, 2, 80
 cuenta1, empresa2, 3, 99
