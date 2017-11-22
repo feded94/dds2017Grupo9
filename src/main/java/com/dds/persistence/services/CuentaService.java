@@ -24,6 +24,7 @@ public class CuentaService {
 
         cuentaPK.setNombreCuenta(nombreCuenta);
         cuentaPK.setPeriodo(periodo);
+        cuentaPK.setNombreEmpresa(empresa.getNombreEmpresa());
 
         Cuenta cuenta = new Cuenta();
 
@@ -32,6 +33,17 @@ public class CuentaService {
         cuenta.setValor(valor);
 
         return repository.save(cuenta);
+    }
+
+    @Transactional
+    public Cuenta save(String nombreCuenta, String nombreEmpresa, Integer periodo, double valor) {
+        Empresa empresa = EmpresaService.getService().find(nombreEmpresa);
+        if (empresa == null) {
+            System.err.println("No existe la empresa \"" + nombreEmpresa + "\".");
+            return null;
+        }
+
+        return save(nombreCuenta, empresa, periodo, valor);
     }
 
     public List<Cuenta> getAll() {
